@@ -96,6 +96,14 @@ public class Login extends javax.swing.JFrame {
         txtf_pass = new javax.swing.JPasswordField();
         jLabel3 = new javax.swing.JLabel();
         lbl_autor = new javax.swing.JLabel();
+        jMenuBar1 = new javax.swing.JMenuBar();
+        jMenu1 = new javax.swing.JMenu();
+        jMenu3 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
+        jMenuItem2 = new javax.swing.JMenuItem();
+        jMenuItem3 = new javax.swing.JMenuItem();
+        jMenu2 = new javax.swing.JMenu();
+        jMenuItem4 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -111,6 +119,12 @@ public class Login extends javax.swing.JFrame {
         lbl_hgr46.setFont(new java.awt.Font("gargi", 0, 18)); // NOI18N
         lbl_hgr46.setForeground(new java.awt.Color(0, 204, 204));
         lbl_hgr46.setText("HGR 46");
+
+        txtf_usuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtf_usuarioActionPerformed(evt);
+            }
+        });
 
         boton_ingresar.setBackground(new java.awt.Color(255, 255, 255));
         boton_ingresar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -138,6 +152,42 @@ public class Login extends javax.swing.JFrame {
         lbl_autor.setForeground(new java.awt.Color(0, 204, 204));
         lbl_autor.setText("Desarrollado por: Eduardo Mora Martínez");
 
+        jMenu1.setText("Archivo");
+
+        jMenu3.setText("Usuario");
+
+        jMenuItem1.setText("Agregar");
+        jMenu3.add(jMenuItem1);
+
+        jMenuItem2.setText("Eliminar");
+        jMenu3.add(jMenuItem2);
+
+        jMenuItem3.setText("Modificar");
+        jMenu3.add(jMenuItem3);
+
+        jMenu1.add(jMenu3);
+
+        jMenuBar1.add(jMenu1);
+
+        jMenu2.setText("Ayuda");
+        jMenu2.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenu2ActionPerformed(evt);
+            }
+        });
+
+        jMenuItem4.setText("Acerca de");
+        jMenuItem4.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem4ActionPerformed(evt);
+            }
+        });
+        jMenu2.add(jMenuItem4);
+
+        jMenuBar1.add(jMenu2);
+
+        setJMenuBar(jMenuBar1);
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -145,21 +195,22 @@ public class Login extends javax.swing.JFrame {
             .addComponent(lbl_autor, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(62, 62, 62)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lbl_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(txtf_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE))
+                                .addGroup(layout.createSequentialGroup()
+                                    .addComponent(lbl_pass, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                                    .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                                    .addComponent(txtf_pass)))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbl_pass, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtf_pass))
-                            .addGroup(layout.createSequentialGroup()
-                                .addComponent(lbl_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                                .addComponent(txtf_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 163, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                        .addGroup(layout.createSequentialGroup()
-                            .addGap(78, 78, 78)
-                            .addComponent(boton_ingresar)
-                            .addGap(59, 59, 59)
-                            .addComponent(boton_salir)))
+                                .addComponent(boton_ingresar)
+                                .addGap(59, 59, 59)
+                                .addComponent(boton_salir))))
                     .addGroup(layout.createSequentialGroup()
                         .addGap(82, 82, 82)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -168,9 +219,9 @@ public class Login extends javax.swing.JFrame {
                                 .addGap(38, 38, 38)
                                 .addComponent(lbl_hgr46)
                                 .addGap(13, 13, 13)))))
-                .addContainerGap(68, Short.MAX_VALUE))
+                .addContainerGap(71, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(0, 0, Short.MAX_VALUE)
+                .addGap(0, 123, Short.MAX_VALUE)
                 .addComponent(jLabel3)
                 .addGap(153, 153, 153))
         );
@@ -189,7 +240,6 @@ public class Login extends javax.swing.JFrame {
                         .addComponent(lbl_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18))
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(8, 8, 8)
                         .addComponent(txtf_usuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(30, 30, 30)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -201,7 +251,7 @@ public class Login extends javax.swing.JFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(boton_salir, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(boton_ingresar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 34, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 13, Short.MAX_VALUE)
                 .addComponent(lbl_autor))
         );
 
@@ -222,6 +272,28 @@ public class Login extends javax.swing.JFrame {
         
     }//GEN-LAST:event_boton_salirActionPerformed
 
+    private void jMenu2ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenu2ActionPerformed
+
+        
+       
+    }//GEN-LAST:event_jMenu2ActionPerformed
+
+    private void jMenuItem4ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem4ActionPerformed
+        
+        showMessageDialog(null, " Programa desarrollado por "
+                + "\n Ing. Eduardo Mora Martínez "
+                + "\n Estudiante CuTonala UdeG"
+                + "\n correo: eduardo.mmoram@imss.gob.mx"
+                + "\n web: www.github.com");
+        
+    }//GEN-LAST:event_jMenuItem4ActionPerformed
+
+    private void txtf_usuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtf_usuarioActionPerformed
+      
+        txtf_usuario.transferFocus();
+        
+    }//GEN-LAST:event_txtf_usuarioActionPerformed
+
  
     public static void main(String args[]) {
      
@@ -236,6 +308,14 @@ public class Login extends javax.swing.JFrame {
     private javax.swing.JButton boton_ingresar;
     private javax.swing.JButton boton_salir;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JMenu jMenu1;
+    private javax.swing.JMenu jMenu2;
+    private javax.swing.JMenu jMenu3;
+    private javax.swing.JMenuBar jMenuBar1;
+    private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem2;
+    private javax.swing.JMenuItem jMenuItem3;
+    private javax.swing.JMenuItem jMenuItem4;
     private javax.swing.JLabel lbl_autor;
     private javax.swing.JLabel lbl_hgr46;
     private javax.swing.JLabel lbl_pass;

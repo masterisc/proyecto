@@ -42,11 +42,56 @@ public class Principal extends javax.swing.JFrame {
         grupoRadios.add(RadioSerie);
         grupoRadios.add(RadioNombre);
         grupoRadios.add(RadioNNI);
+        grupoUsuarios.add(radioEduardo);
+        grupoUsuarios.add(radioCarlos);
+        grupoUsuarios.add(radioCristal);
+        grupoUsuarios.add(radioHernandez);
         txtfbuscarequipo.setEnabled(false);
         txtfbuscarequipo.setEditable(false);
         TablaMostrar.setEnabled(true);
         botonActualizar.setEnabled(false);
+        lblcontador.setVisible(true);
         formatoequipo();
+        
+//Conteo de equipos de computo 
+        Conexion conex = null;
+            Statement stm = null;
+            ResultSet rs = null;
+
+            conex= new Conexion(); 
+             
+
+            try {
+                stm = conex.getConnection().createStatement();
+                 
+                   rs = stm.executeQuery("select count(serie_compu) from equipo ");
+                  if(rs.next()){
+                      String contador = rs.getString("count(serie_compu)");
+                      lblcontador.setText(contador + "");
+                  }
+                   
+                   
+                   
+            } catch (SQLException ex) {
+                Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                        
+                        
+
+            try {
+                stm.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                rs.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                conex.desconectar();
+//Fin de conteo de equipos de computo
+
+
        // tablaActualizar.setEditingColumn(0);
     }
 
@@ -55,6 +100,7 @@ public class Principal extends javax.swing.JFrame {
     private void initComponents() {
 
         grupoRadios = new javax.swing.ButtonGroup();
+        grupoUsuarios = new javax.swing.ButtonGroup();
         combox = new javax.swing.JComboBox<>();
         btn_regresar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -82,7 +128,15 @@ public class Principal extends javax.swing.JFrame {
         Tabla_ejem = new javax.swing.JTable();
         Jframeconsultaimpresora = new javax.swing.JInternalFrame();
         Jframeayuda = new javax.swing.JInternalFrame();
+        jInternalFrame2 = new javax.swing.JInternalFrame();
         jInternalFrame6 = new javax.swing.JInternalFrame();
+        radioEduardo = new javax.swing.JRadioButton();
+        radioCarlos = new javax.swing.JRadioButton();
+        radioCristal = new javax.swing.JRadioButton();
+        radioHernandez = new javax.swing.JRadioButton();
+        jInternalFrame3 = new javax.swing.JInternalFrame();
+        jLabel3 = new javax.swing.JLabel();
+        lblcontador = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
@@ -106,7 +160,7 @@ public class Principal extends javax.swing.JFrame {
         });
 
         btn_regresar.setBackground(new java.awt.Color(255, 255, 255));
-        btn_regresar.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        btn_regresar.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
         btn_regresar.setForeground(new java.awt.Color(0, 204, 204));
         btn_regresar.setText("Regresar");
         btn_regresar.addActionListener(new java.awt.event.ActionListener() {
@@ -142,11 +196,11 @@ public class Principal extends javax.swing.JFrame {
         Jfconsultainventario.getContentPane().setLayout(JfconsultainventarioLayout);
         JfconsultainventarioLayout.setHorizontalGroup(
             JfconsultainventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1225, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1234, Short.MAX_VALUE)
         );
         JfconsultainventarioLayout.setVerticalGroup(
             JfconsultainventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 611, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("CONSULTA INVENTARIO", Jfconsultainventario);
@@ -226,6 +280,7 @@ public class Principal extends javax.swing.JFrame {
 
         jButton1.setText("Insertar equipo");
 
+        BotonMostrar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         BotonMostrar.setText("Mostrar todo");
         BotonMostrar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -233,6 +288,7 @@ public class Principal extends javax.swing.JFrame {
             }
         });
 
+        botonEditar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         botonEditar.setText("Editar");
         botonEditar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -290,20 +346,19 @@ public class Principal extends javax.swing.JFrame {
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanel1Layout.createSequentialGroup()
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addGap(11, 11, 11)
-                            .addComponent(BotonMostrar))
-                        .addGroup(jPanel1Layout.createSequentialGroup()
-                            .addContainerGap()
-                            .addComponent(botonEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
                             .addComponent(RadioSerie)
                             .addComponent(jLabel2, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                             .addComponent(RadioNombre, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(RadioNNI))))
+                            .addComponent(RadioNNI)))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addGap(11, 11, 11)
+                        .addComponent(BotonMostrar))
+                    .addGroup(jPanel1Layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(botonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 96, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addGap(83, 83, 83)
@@ -339,10 +394,10 @@ public class Principal extends javax.swing.JFrame {
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(RadioNNI)
                         .addGap(46, 46, 46)
-                        .addComponent(BotonMostrar)
-                        .addGap(18, 18, 18)
-                        .addComponent(botonEditar)
-                        .addContainerGap(386, Short.MAX_VALUE))
+                        .addComponent(BotonMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(botonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap(380, Short.MAX_VALUE))
                     .addComponent(jInternalFrame1)))
         );
 
@@ -380,11 +435,11 @@ public class Principal extends javax.swing.JFrame {
         Jframeconsultausuario.getContentPane().setLayout(JframeconsultausuarioLayout);
         JframeconsultausuarioLayout.setHorizontalGroup(
             JframeconsultausuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1225, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1234, Short.MAX_VALUE)
         );
         JframeconsultausuarioLayout.setVerticalGroup(
             JframeconsultausuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 611, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("CONSULTA USUARIO", Jframeconsultausuario);
@@ -410,29 +465,114 @@ public class Principal extends javax.swing.JFrame {
         Jframeayuda.getContentPane().setLayout(JframeayudaLayout);
         JframeayudaLayout.setHorizontalGroup(
             JframeayudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1225, Short.MAX_VALUE)
+            .addGap(0, 1234, Short.MAX_VALUE)
         );
         JframeayudaLayout.setVerticalGroup(
             JframeayudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 611, Short.MAX_VALUE)
+            .addGap(0, 636, Short.MAX_VALUE)
         );
 
-        jTabbedPane1.addTab("AYUDA", Jframeayuda);
+        jTabbedPane1.addTab("NUEVA TAREA", Jframeayuda);
+
+        jInternalFrame2.setVisible(true);
+
+        javax.swing.GroupLayout jInternalFrame2Layout = new javax.swing.GroupLayout(jInternalFrame2.getContentPane());
+        jInternalFrame2.getContentPane().setLayout(jInternalFrame2Layout);
+        jInternalFrame2Layout.setHorizontalGroup(
+            jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        jInternalFrame2Layout.setVerticalGroup(
+            jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        jTabbedPane1.addTab("tab7", jInternalFrame2);
 
         jInternalFrame6.setVisible(true);
+
+        radioEduardo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        radioEduardo.setText("Eduardo Mora");
+        radioEduardo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioEduardoActionPerformed(evt);
+            }
+        });
+
+        radioCarlos.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        radioCarlos.setText("Carlos Lopez");
+
+        radioCristal.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        radioCristal.setText("Cristal Montiel");
+
+        radioHernandez.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        radioHernandez.setText("Carlos Hernandez");
+
+        jInternalFrame3.setVisible(true);
+
+        javax.swing.GroupLayout jInternalFrame3Layout = new javax.swing.GroupLayout(jInternalFrame3.getContentPane());
+        jInternalFrame3.getContentPane().setLayout(jInternalFrame3Layout);
+        jInternalFrame3Layout.setHorizontalGroup(
+            jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 988, Short.MAX_VALUE)
+        );
+        jInternalFrame3Layout.setVerticalGroup(
+            jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 488, Short.MAX_VALUE)
+        );
 
         javax.swing.GroupLayout jInternalFrame6Layout = new javax.swing.GroupLayout(jInternalFrame6.getContentPane());
         jInternalFrame6.getContentPane().setLayout(jInternalFrame6Layout);
         jInternalFrame6Layout.setHorizontalGroup(
             jInternalFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jInternalFrame6Layout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jInternalFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addComponent(radioHernandez, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
+                    .addComponent(radioCristal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(radioCarlos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(radioEduardo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jInternalFrame3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(65, Short.MAX_VALUE))
         );
         jInternalFrame6Layout.setVerticalGroup(
             jInternalFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(jInternalFrame6Layout.createSequentialGroup()
+                .addGap(24, 24, 24)
+                .addComponent(radioEduardo)
+                .addGap(15, 15, 15)
+                .addComponent(radioCarlos)
+                .addGap(18, 18, 18)
+                .addComponent(radioCristal)
+                .addGap(18, 18, 18)
+                .addComponent(radioHernandez)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jInternalFrame6Layout.createSequentialGroup()
+                .addComponent(jInternalFrame3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 119, Short.MAX_VALUE))
         );
 
-        jTabbedPane1.addTab("tab6", jInternalFrame6);
+        jTabbedPane1.addTab("PENDIENTES", jInternalFrame6);
+
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel3.setText("Total de equipos :");
+
+        lblcontador.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        lblcontador.addAncestorListener(new javax.swing.event.AncestorListener() {
+            public void ancestorMoved(javax.swing.event.AncestorEvent evt) {
+            }
+            public void ancestorAdded(javax.swing.event.AncestorEvent evt) {
+                lblcontadorAncestorAdded(evt);
+            }
+            public void ancestorRemoved(javax.swing.event.AncestorEvent evt) {
+            }
+        });
+        lblcontador.addComponentListener(new java.awt.event.ComponentAdapter() {
+            public void componentShown(java.awt.event.ComponentEvent evt) {
+                lblcontadorComponentShown(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -442,32 +582,41 @@ public class Principal extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jTabbedPane1)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(btn_regresar)
-                        .addGap(19, 19, 19))))
+                        .addGap(229, 229, 229)
+                        .addComponent(combox, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 195, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jLabel3, javax.swing.GroupLayout.PREFERRED_SIZE, 151, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(lblcontador, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(123, 123, 123))
             .addGroup(layout.createSequentialGroup()
-                .addGap(239, 239, 239)
-                .addComponent(combox, javax.swing.GroupLayout.PREFERRED_SIZE, 224, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
+                .addGap(28, 28, 28)
+                .addComponent(btn_regresar)
+                .addGap(19, 19, 19))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGap(21, 21, 21)
-                .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(14, 14, 14)
+                        .addComponent(jLabel1, javax.swing.GroupLayout.PREFERRED_SIZE, 24, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(3, 3, 3)
+                        .addComponent(lblcontador, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(combox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
-                        .addComponent(btn_regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 668, Short.MAX_VALUE))
-                .addContainerGap())
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 634, Short.MAX_VALUE)
+                        .addComponent(btn_regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addContainerGap())
+                    .addGroup(layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
         );
 
         pack();
@@ -528,7 +677,8 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_RadioNombreMouseClicked
 
     private void RadioSerieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioSerieActionPerformed
-       
+        RadioSerie.transferFocus();
+        
         if (RadioSerie.isSelected()== true){
             botonActualizar.setEnabled(true);
             txtfbuscarequipo.setEnabled(true);
@@ -630,7 +780,7 @@ public class Principal extends javax.swing.JFrame {
                        txtfbuscarequipo.setText("");
                      
                    }
-                   modelom.addTableModelListener(new TableModelListener() {
+                   /*modelom.addTableModelListener(new TableModelListener() {
                        
                     @Override
                     public void tableChanged(TableModelEvent e) {
@@ -644,7 +794,7 @@ public class Principal extends javax.swing.JFrame {
                         }
                         throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
                     }
-                });
+                });*/
                    
             } catch (SQLException ex) {
                 Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
@@ -1209,6 +1359,60 @@ public class Principal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_jInternalFrame1PropertyChange
 
+    private void lblcontadorAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lblcontadorAncestorAdded
+                
+    }//GEN-LAST:event_lblcontadorAncestorAdded
+
+    private void lblcontadorComponentShown(java.awt.event.ComponentEvent evt) {//GEN-FIRST:event_lblcontadorComponentShown
+         Conexion conex = null;
+            Statement stm = null;
+            ResultSet rs = null;
+
+            conex= new Conexion(); 
+             
+
+            try {
+                stm = conex.getConnection().createStatement();
+                 
+                   rs = stm.executeQuery("select count(serie_compu) from equipo ");
+                  if(rs.next()){
+                      String contador = rs.getString("count(serie_compu)");
+                      lblcontador.setText(contador);
+                  }
+                   
+                   
+                   
+            } catch (SQLException ex) {
+                Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                        
+                        
+
+            try {
+                stm.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                rs.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                conex.desconectar();
+    }//GEN-LAST:event_lblcontadorComponentShown
+
+    private void radioEduardoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioEduardoActionPerformed
+       
+        if (radioEduardo.isSelected()== true){
+            botonActualizar.setEnabled(true);
+            txtfbuscarequipo.setEnabled(true);
+            txtfbuscarequipo.setEditable(true);
+            botonBuscar.setEnabled(true);
+            
+        }        
+        
+    }//GEN-LAST:event_radioEduardoActionPerformed
+
     public void formatoequipo(){
         Tabla.getColumnModel().getColumn(0).setPreferredWidth(80);
         Tabla.getColumnModel().getColumn(1).setPreferredWidth(20);
@@ -1252,16 +1456,25 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton btn_regresar;
     private javax.swing.JComboBox<String> combox;
     private javax.swing.ButtonGroup grupoRadios;
+    private javax.swing.ButtonGroup grupoUsuarios;
     private javax.swing.JButton jButton1;
     private javax.swing.JInternalFrame jInternalFrame1;
+    private javax.swing.JInternalFrame jInternalFrame2;
+    private javax.swing.JInternalFrame jInternalFrame3;
     private javax.swing.JInternalFrame jInternalFrame6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
+    private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JLabel lblcontador;
+    private javax.swing.JRadioButton radioCarlos;
+    private javax.swing.JRadioButton radioCristal;
+    private javax.swing.JRadioButton radioEduardo;
+    private javax.swing.JRadioButton radioHernandez;
     private javax.swing.JTextField txtfbuscarequipo;
     // End of variables declaration//GEN-END:variables
 }
