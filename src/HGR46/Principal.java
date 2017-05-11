@@ -46,11 +46,22 @@ public class Principal extends javax.swing.JFrame {
         grupoUsuarios.add(radioCarlos);
         grupoUsuarios.add(radioCristal);
         grupoUsuarios.add(radioHernandez);
+        grupoUsuarios.add(radioGrupal);
+        grupotarea.add(radionuevatarea);
+        grupotarea.add(radiopendientes);
         txtfbuscarequipo.setEnabled(false);
         txtfbuscarequipo.setEditable(false);
         TablaMostrar.setEnabled(true);
         botonActualizar.setEnabled(false);
         lblcontador.setVisible(true);
+        internalframetareas.setVisible(false);
+        radioEduardo.setVisible(false);
+        radioCarlos.setVisible(false);
+        radioCristal.setVisible(false);
+        radioHernandez.setVisible(false);
+        radioGrupal.setVisible(false);
+        internalframependientes.setVisible(false);
+       
         formatoequipo();
         
 //Conteo de equipos de computo 
@@ -101,6 +112,7 @@ public class Principal extends javax.swing.JFrame {
 
         grupoRadios = new javax.swing.ButtonGroup();
         grupoUsuarios = new javax.swing.ButtonGroup();
+        grupotarea = new javax.swing.ButtonGroup();
         combox = new javax.swing.JComboBox<>();
         btn_regresar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -127,19 +139,25 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane2 = new javax.swing.JScrollPane();
         Tabla_ejem = new javax.swing.JTable();
         Jframeconsultaimpresora = new javax.swing.JInternalFrame();
-        Jframeayuda = new javax.swing.JInternalFrame();
-        jInternalFrame2 = new javax.swing.JInternalFrame();
-        jInternalFrame6 = new javax.swing.JInternalFrame();
+        jframetareas = new javax.swing.JInternalFrame();
         radioEduardo = new javax.swing.JRadioButton();
+        jPanel2 = new javax.swing.JPanel();
+        internalframetareas = new javax.swing.JInternalFrame();
+        jScrollPane4 = new javax.swing.JScrollPane();
+        TAREAS = new javax.swing.JTable();
+        internalframependientes = new javax.swing.JInternalFrame();
         radioCarlos = new javax.swing.JRadioButton();
         radioCristal = new javax.swing.JRadioButton();
         radioHernandez = new javax.swing.JRadioButton();
-        jInternalFrame3 = new javax.swing.JInternalFrame();
+        radioGrupal = new javax.swing.JRadioButton();
+        radiopendientes = new javax.swing.JRadioButton();
+        radionuevatarea = new javax.swing.JRadioButton();
         jLabel3 = new javax.swing.JLabel();
         lblcontador = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
         setBackground(new java.awt.Color(255, 255, 255));
+        setPreferredSize(new java.awt.Dimension(1366, 768));
         setSize(new java.awt.Dimension(1366, 768));
 
         combox.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
@@ -173,12 +191,16 @@ public class Principal extends javax.swing.JFrame {
         jLabel1.setForeground(new java.awt.Color(0, 204, 204));
         jLabel1.setText("Selecciona una opción?");
 
+        jTabbedPane1.setMinimumSize(new java.awt.Dimension(1267, 719));
+        jTabbedPane1.setPreferredSize(new java.awt.Dimension(1267, 400));
         jTabbedPane1.addChangeListener(new javax.swing.event.ChangeListener() {
             public void stateChanged(javax.swing.event.ChangeEvent evt) {
                 jTabbedPane1StateChanged(evt);
             }
         });
 
+        Jfconsultainventario.setMinimumSize(new java.awt.Dimension(1262, 600));
+        Jfconsultainventario.setPreferredSize(new java.awt.Dimension(1262, 600));
         Jfconsultainventario.setVisible(true);
 
         Tabla.setModel(new javax.swing.table.DefaultTableModel(
@@ -196,11 +218,13 @@ public class Principal extends javax.swing.JFrame {
         Jfconsultainventario.getContentPane().setLayout(JfconsultainventarioLayout);
         JfconsultainventarioLayout.setHorizontalGroup(
             JfconsultainventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1234, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 1246, Short.MAX_VALUE)
         );
         JfconsultainventarioLayout.setVerticalGroup(
             JfconsultainventarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
+            .addGroup(JfconsultainventarioLayout.createSequentialGroup()
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 580, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 74, Short.MAX_VALUE))
         );
 
         jTabbedPane1.addTab("CONSULTA INVENTARIO", Jfconsultainventario);
@@ -397,7 +421,7 @@ public class Principal extends javax.swing.JFrame {
                         .addComponent(BotonMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(botonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(380, Short.MAX_VALUE))
+                        .addContainerGap(406, Short.MAX_VALUE))
                     .addComponent(jInternalFrame1)))
         );
 
@@ -435,11 +459,11 @@ public class Principal extends javax.swing.JFrame {
         Jframeconsultausuario.getContentPane().setLayout(JframeconsultausuarioLayout);
         JframeconsultausuarioLayout.setHorizontalGroup(
             JframeconsultausuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1234, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1246, Short.MAX_VALUE)
         );
         JframeconsultausuarioLayout.setVerticalGroup(
             JframeconsultausuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 636, Short.MAX_VALUE)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 662, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("CONSULTA USUARIO", Jframeconsultausuario);
@@ -459,37 +483,9 @@ public class Principal extends javax.swing.JFrame {
 
         jTabbedPane1.addTab("CONSULTA IMPRESORA", Jframeconsultaimpresora);
 
-        Jframeayuda.setVisible(true);
-
-        javax.swing.GroupLayout JframeayudaLayout = new javax.swing.GroupLayout(Jframeayuda.getContentPane());
-        Jframeayuda.getContentPane().setLayout(JframeayudaLayout);
-        JframeayudaLayout.setHorizontalGroup(
-            JframeayudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 1234, Short.MAX_VALUE)
-        );
-        JframeayudaLayout.setVerticalGroup(
-            JframeayudaLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 636, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("NUEVA TAREA", Jframeayuda);
-
-        jInternalFrame2.setVisible(true);
-
-        javax.swing.GroupLayout jInternalFrame2Layout = new javax.swing.GroupLayout(jInternalFrame2.getContentPane());
-        jInternalFrame2.getContentPane().setLayout(jInternalFrame2Layout);
-        jInternalFrame2Layout.setHorizontalGroup(
-            jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-        jInternalFrame2Layout.setVerticalGroup(
-            jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
-        );
-
-        jTabbedPane1.addTab("tab7", jInternalFrame2);
-
-        jInternalFrame6.setVisible(true);
+        jframetareas.setMinimumSize(new java.awt.Dimension(1366, 600));
+        jframetareas.setPreferredSize(new java.awt.Dimension(1366, 600));
+        jframetareas.setVisible(true);
 
         radioEduardo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         radioEduardo.setText("Eduardo Mora");
@@ -498,6 +494,80 @@ public class Principal extends javax.swing.JFrame {
                 radioEduardoActionPerformed(evt);
             }
         });
+
+        jPanel2.setPreferredSize(new java.awt.Dimension(1200, 600));
+
+        internalframetareas.setTitle("TAREAS");
+        internalframetareas.setPreferredSize(new java.awt.Dimension(1093, 600));
+        internalframetareas.setVisible(true);
+
+        TAREAS.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null},
+                {null, null, null},
+                {null, null, null},
+                {null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3"
+            }
+        ));
+        jScrollPane4.setViewportView(TAREAS);
+
+        javax.swing.GroupLayout internalframetareasLayout = new javax.swing.GroupLayout(internalframetareas.getContentPane());
+        internalframetareas.getContentPane().setLayout(internalframetareasLayout);
+        internalframetareasLayout.setHorizontalGroup(
+            internalframetareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 1077, Short.MAX_VALUE)
+        );
+        internalframetareasLayout.setVerticalGroup(
+            internalframetareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(internalframetareasLayout.createSequentialGroup()
+                .addGap(620, 620, 620)
+                .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 27, Short.MAX_VALUE)
+                .addContainerGap())
+        );
+
+        internalframependientes.setTitle("PENDIENTES");
+        internalframependientes.setMinimumSize(new java.awt.Dimension(1000, 600));
+        internalframependientes.setOpaque(true);
+        internalframependientes.setPreferredSize(new java.awt.Dimension(1000, 600));
+        internalframependientes.setVisible(true);
+
+        javax.swing.GroupLayout internalframependientesLayout = new javax.swing.GroupLayout(internalframependientes.getContentPane());
+        internalframependientes.getContentPane().setLayout(internalframependientesLayout);
+        internalframependientesLayout.setHorizontalGroup(
+            internalframependientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+        internalframependientesLayout.setVerticalGroup(
+            internalframependientesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGap(0, 0, Short.MAX_VALUE)
+        );
+
+        javax.swing.GroupLayout jPanel2Layout = new javax.swing.GroupLayout(jPanel2);
+        jPanel2.setLayout(jPanel2Layout);
+        jPanel2Layout.setHorizontalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addComponent(internalframetareas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 107, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanel2Layout.createSequentialGroup()
+                    .addComponent(internalframependientes, javax.swing.GroupLayout.DEFAULT_SIZE, 1190, Short.MAX_VALUE)
+                    .addContainerGap()))
+        );
+        jPanel2Layout.setVerticalGroup(
+            jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jPanel2Layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(internalframetareas, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+            .addGroup(jPanel2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                .addGroup(jPanel2Layout.createSequentialGroup()
+                    .addComponent(internalframependientes, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGap(0, 0, Short.MAX_VALUE)))
+        );
 
         radioCarlos.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         radioCarlos.setText("Carlos Lopez");
@@ -508,52 +578,67 @@ public class Principal extends javax.swing.JFrame {
         radioHernandez.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
         radioHernandez.setText("Carlos Hernandez");
 
-        jInternalFrame3.setVisible(true);
+        radioGrupal.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        radioGrupal.setText("Grupal");
 
-        javax.swing.GroupLayout jInternalFrame3Layout = new javax.swing.GroupLayout(jInternalFrame3.getContentPane());
-        jInternalFrame3.getContentPane().setLayout(jInternalFrame3Layout);
-        jInternalFrame3Layout.setHorizontalGroup(
-            jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 988, Short.MAX_VALUE)
-        );
-        jInternalFrame3Layout.setVerticalGroup(
-            jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 488, Short.MAX_VALUE)
-        );
+        radiopendientes.setText("PENDIENTES");
+        radiopendientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radiopendientesActionPerformed(evt);
+            }
+        });
 
-        javax.swing.GroupLayout jInternalFrame6Layout = new javax.swing.GroupLayout(jInternalFrame6.getContentPane());
-        jInternalFrame6.getContentPane().setLayout(jInternalFrame6Layout);
-        jInternalFrame6Layout.setHorizontalGroup(
-            jInternalFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jInternalFrame6Layout.createSequentialGroup()
-                .addContainerGap()
-                .addGroup(jInternalFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                    .addComponent(radioHernandez, javax.swing.GroupLayout.DEFAULT_SIZE, 141, Short.MAX_VALUE)
-                    .addComponent(radioCristal, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+        radionuevatarea.setText("NUEVA TAREA");
+        radionuevatarea.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radionuevatareaActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout jframetareasLayout = new javax.swing.GroupLayout(jframetareas.getContentPane());
+        jframetareas.getContentPane().setLayout(jframetareasLayout);
+        jframetareasLayout.setHorizontalGroup(
+            jframetareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jframetareasLayout.createSequentialGroup()
+                .addGroup(jframetareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addComponent(radioCarlos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(radioEduardo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-                .addGap(18, 18, 18)
-                .addComponent(jInternalFrame3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(65, Short.MAX_VALUE))
+                    .addComponent(radioEduardo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(jframetareasLayout.createSequentialGroup()
+                        .addGroup(jframetareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(radioGrupal)
+                            .addComponent(radiopendientes)
+                            .addComponent(radionuevatarea)
+                            .addComponent(radioHernandez, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(radioCristal, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(0, 0, Short.MAX_VALUE)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jPanel2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(92, 92, 92))
         );
-        jInternalFrame6Layout.setVerticalGroup(
-            jInternalFrame6Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(jInternalFrame6Layout.createSequentialGroup()
-                .addGap(24, 24, 24)
+        jframetareasLayout.setVerticalGroup(
+            jframetareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jframetareasLayout.createSequentialGroup()
+                .addGap(81, 81, 81)
+                .addComponent(radionuevatarea)
+                .addGap(18, 18, 18)
+                .addComponent(radiopendientes)
+                .addGap(153, 153, 153)
+                .addComponent(radioGrupal)
+                .addGap(18, 18, 18)
                 .addComponent(radioEduardo)
-                .addGap(15, 15, 15)
+                .addGap(18, 18, 18)
                 .addComponent(radioCarlos)
                 .addGap(18, 18, 18)
                 .addComponent(radioCristal)
                 .addGap(18, 18, 18)
                 .addComponent(radioHernandez)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addGroup(jInternalFrame6Layout.createSequentialGroup()
-                .addComponent(jInternalFrame3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 119, Short.MAX_VALUE))
+            .addGroup(jframetareasLayout.createSequentialGroup()
+                .addComponent(jPanel2, javax.swing.GroupLayout.DEFAULT_SIZE, 622, Short.MAX_VALUE)
+                .addGap(651, 651, 651))
         );
 
-        jTabbedPane1.addTab("PENDIENTES", jInternalFrame6);
+        jTabbedPane1.addTab("TAREAS", jframetareas);
 
         jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("Total de equipos :");
@@ -591,10 +676,10 @@ public class Principal extends javax.swing.JFrame {
                 .addComponent(lblcontador, javax.swing.GroupLayout.PREFERRED_SIZE, 80, javax.swing.GroupLayout.PREFERRED_SIZE)
                 .addGap(123, 123, 123))
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
-                .addGap(28, 28, 28)
+                .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1267, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(btn_regresar)
-                .addGap(19, 19, 19))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -609,14 +694,12 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(combox, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED, 634, Short.MAX_VALUE)
+                    .addComponent(jTabbedPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 711, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                         .addComponent(btn_regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap())
-                    .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))))
+                        .addGap(80, 80, 80))))
         );
 
         pack();
@@ -1413,6 +1496,34 @@ public class Principal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_radioEduardoActionPerformed
 
+    private void radionuevatareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radionuevatareaActionPerformed
+        
+        if (radionuevatarea.isSelected()== true){
+            internalframetareas.setVisible(true);
+            internalframependientes.setVisible(false);
+            radioEduardo.setVisible(true);
+            radioCarlos.setVisible(true);
+            radioCristal.setVisible(true);
+            radioHernandez.setVisible(true);
+            radioGrupal.setVisible(true);
+        }     
+        
+    }//GEN-LAST:event_radionuevatareaActionPerformed
+
+    private void radiopendientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radiopendientesActionPerformed
+       
+        if (radiopendientes.isSelected()== true){
+            internalframependientes.setVisible(true);
+            internalframetareas.setVisible(false);
+            radioEduardo.setVisible(true);
+            radioCarlos.setVisible(true);
+            radioCristal.setVisible(true);
+            radioHernandez.setVisible(true);
+            radioGrupal.setVisible(true);
+        }     
+        
+    }//GEN-LAST:event_radiopendientesActionPerformed
+
     public void formatoequipo(){
         Tabla.getColumnModel().getColumn(0).setPreferredWidth(80);
         Tabla.getColumnModel().getColumn(1).setPreferredWidth(20);
@@ -1441,12 +1552,12 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JButton BotonMostrar;
     private javax.swing.JInternalFrame Jfactualizainventario;
     private javax.swing.JInternalFrame Jfconsultainventario;
-    private javax.swing.JInternalFrame Jframeayuda;
     private javax.swing.JInternalFrame Jframeconsultaimpresora;
     private javax.swing.JInternalFrame Jframeconsultausuario;
     private javax.swing.JRadioButton RadioNNI;
     private javax.swing.JRadioButton RadioNombre;
     private javax.swing.JRadioButton RadioSerie;
+    private javax.swing.JTable TAREAS;
     private javax.swing.JTable Tabla;
     private javax.swing.JTable TablaMostrar;
     private javax.swing.JTable Tabla_ejem;
@@ -1457,24 +1568,30 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JComboBox<String> combox;
     private javax.swing.ButtonGroup grupoRadios;
     private javax.swing.ButtonGroup grupoUsuarios;
+    private javax.swing.ButtonGroup grupotarea;
+    private javax.swing.JInternalFrame internalframependientes;
+    private javax.swing.JInternalFrame internalframetareas;
     private javax.swing.JButton jButton1;
     private javax.swing.JInternalFrame jInternalFrame1;
-    private javax.swing.JInternalFrame jInternalFrame2;
-    private javax.swing.JInternalFrame jInternalFrame3;
-    private javax.swing.JInternalFrame jInternalFrame6;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JPanel jPanel1;
+    private javax.swing.JPanel jPanel2;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
+    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JInternalFrame jframetareas;
     private javax.swing.JLabel lblcontador;
     private javax.swing.JRadioButton radioCarlos;
     private javax.swing.JRadioButton radioCristal;
     private javax.swing.JRadioButton radioEduardo;
+    private javax.swing.JRadioButton radioGrupal;
     private javax.swing.JRadioButton radioHernandez;
+    private javax.swing.JRadioButton radionuevatarea;
+    private javax.swing.JRadioButton radiopendientes;
     private javax.swing.JTextField txtfbuscarequipo;
     // End of variables declaration//GEN-END:variables
 }
