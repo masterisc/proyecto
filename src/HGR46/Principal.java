@@ -49,9 +49,11 @@ public class Principal extends javax.swing.JFrame {
         grupoUsuarios.add(radioGrupal);
         grupotarea.add(radionuevatarea);
         grupotarea.add(radiopendientes);
+        grupoImpresora.add(jRadioNSerie);
+        grupoImpresora.add(jRadioConexion);
         txtfbuscarequipo.setEnabled(false);
         txtfbuscarequipo.setEditable(false);
-        TablaMostrar.setEnabled(true);
+        TablaMostrar.setEnabled(false);
         botonActualizar.setEnabled(false);
         lblcontador.setVisible(true);
         internalframetareas.setVisible(false);
@@ -61,6 +63,9 @@ public class Principal extends javax.swing.JFrame {
         radioHernandez.setVisible(false);
         radioGrupal.setVisible(false);
         internalframependientes.setVisible(false);
+        jTextImpresora.setEnabled(false);
+        TablaImpresora.setEnabled(false);
+        GuardarImpresora.setEnabled(false);
        
         formatoequipo();
         
@@ -113,6 +118,7 @@ public class Principal extends javax.swing.JFrame {
         grupoRadios = new javax.swing.ButtonGroup();
         grupoUsuarios = new javax.swing.ButtonGroup();
         grupotarea = new javax.swing.ButtonGroup();
+        grupoImpresora = new javax.swing.ButtonGroup();
         combox = new javax.swing.JComboBox<>();
         btn_regresar = new javax.swing.JButton();
         jLabel1 = new javax.swing.JLabel();
@@ -136,9 +142,24 @@ public class Principal extends javax.swing.JFrame {
         jScrollPane3 = new javax.swing.JScrollPane();
         TablaMostrar = new javax.swing.JTable();
         Jframeconsultausuario = new javax.swing.JInternalFrame();
+        jInternalFrame3 = new javax.swing.JInternalFrame();
         jScrollPane2 = new javax.swing.JScrollPane();
-        Tabla_ejem = new javax.swing.JTable();
+        TablaUsuario = new javax.swing.JTable();
+        BuscaUsuario = new javax.swing.JTextField();
+        jLabel4 = new javax.swing.JLabel();
+        BuscarUsuario = new javax.swing.JButton();
         Jframeconsultaimpresora = new javax.swing.JInternalFrame();
+        jInternalFrame2 = new javax.swing.JInternalFrame();
+        jScrollPane5 = new javax.swing.JScrollPane();
+        TablaImpresora = new javax.swing.JTable();
+        jTextImpresora = new javax.swing.JTextField();
+        BuscarImpresora = new javax.swing.JButton();
+        MostrarTodoImpresora = new javax.swing.JButton();
+        GuardarImpresora = new javax.swing.JButton();
+        jRadioNSerie = new javax.swing.JRadioButton();
+        jRadioConexion = new javax.swing.JRadioButton();
+        EditarImpresora = new javax.swing.JButton();
+        jLabel5 = new javax.swing.JLabel();
         jframetareas = new javax.swing.JInternalFrame();
         radioEduardo = new javax.swing.JRadioButton();
         jPanel2 = new javax.swing.JPanel();
@@ -230,28 +251,15 @@ public class Principal extends javax.swing.JFrame {
         jTabbedPane1.addTab("CONSULTA INVENTARIO", Jfconsultainventario);
 
         Jfactualizainventario.setVisible(true);
-        Jfactualizainventario.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                JfactualizainventarioPropertyChange(evt);
+        Jfactualizainventario.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                JfactualizainventarioMouseEntered(evt);
             }
         });
 
         jPanel1.setToolTipText("");
 
         RadioSerie.setText("Serie");
-        RadioSerie.addItemListener(new java.awt.event.ItemListener() {
-            public void itemStateChanged(java.awt.event.ItemEvent evt) {
-                RadioSerieItemStateChanged(evt);
-            }
-        });
-        RadioSerie.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                RadioSerieMouseClicked(evt);
-            }
-            public void mousePressed(java.awt.event.MouseEvent evt) {
-                RadioSerieMousePressed(evt);
-            }
-        });
         RadioSerie.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RadioSerieActionPerformed(evt);
@@ -259,11 +267,6 @@ public class Principal extends javax.swing.JFrame {
         });
 
         RadioNombre.setText("Nombre");
-        RadioNombre.addMouseListener(new java.awt.event.MouseAdapter() {
-            public void mouseClicked(java.awt.event.MouseEvent evt) {
-                RadioNombreMouseClicked(evt);
-            }
-        });
         RadioNombre.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 RadioNombreActionPerformed(evt);
@@ -440,45 +443,197 @@ public class Principal extends javax.swing.JFrame {
 
         Jframeconsultausuario.setVisible(true);
 
-        Tabla_ejem.setModel(new javax.swing.table.DefaultTableModel(
+        jInternalFrame3.setVisible(true);
+
+        TablaUsuario.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8", "Title 9", "Title 10", "Title 11", "Title 12"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7"
             }
         ));
-        Tabla_ejem.addContainerListener(new java.awt.event.ContainerAdapter() {
-            public void componentAdded(java.awt.event.ContainerEvent evt) {
-                Tabla_ejemComponentAdded(evt);
+        jScrollPane2.setViewportView(TablaUsuario);
+
+        javax.swing.GroupLayout jInternalFrame3Layout = new javax.swing.GroupLayout(jInternalFrame3.getContentPane());
+        jInternalFrame3.getContentPane().setLayout(jInternalFrame3Layout);
+        jInternalFrame3Layout.setHorizontalGroup(
+            jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+        );
+        jInternalFrame3Layout.setVerticalGroup(
+            jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(jInternalFrame3Layout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 565, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(0, 0, Short.MAX_VALUE))
+        );
+
+        jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
+        jLabel4.setText("Buscar Usuario");
+
+        BuscarUsuario.setText("Buscar");
+        BuscarUsuario.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarUsuarioActionPerformed(evt);
             }
         });
-        jScrollPane2.setViewportView(Tabla_ejem);
 
         javax.swing.GroupLayout JframeconsultausuarioLayout = new javax.swing.GroupLayout(Jframeconsultausuario.getContentPane());
         Jframeconsultausuario.getContentPane().setLayout(JframeconsultausuarioLayout);
         JframeconsultausuarioLayout.setHorizontalGroup(
             JframeconsultausuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 1246, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JframeconsultausuarioLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jInternalFrame3)
+                .addContainerGap())
+            .addGroup(JframeconsultausuarioLayout.createSequentialGroup()
+                .addGap(275, 275, 275)
+                .addComponent(jLabel4)
+                .addGap(18, 18, 18)
+                .addComponent(BuscaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, 188, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(18, 18, 18)
+                .addComponent(BuscarUsuario)
+                .addContainerGap(592, Short.MAX_VALUE))
         );
         JframeconsultausuarioLayout.setVerticalGroup(
             JframeconsultausuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 662, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JframeconsultausuarioLayout.createSequentialGroup()
+                .addGap(16, 16, 16)
+                .addGroup(JframeconsultausuarioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(BuscaUsuario, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(BuscarUsuario)
+                    .addComponent(jLabel4, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addComponent(jInternalFrame3, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                .addGap(213, 213, 213))
         );
 
         jTabbedPane1.addTab("CONSULTA USUARIO", Jframeconsultausuario);
 
         Jframeconsultaimpresora.setVisible(true);
+        Jframeconsultaimpresora.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseEntered(java.awt.event.MouseEvent evt) {
+                JframeconsultaimpresoraMouseEntered(evt);
+            }
+        });
+
+        jInternalFrame2.setVisible(true);
+
+        TablaImpresora.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane5.setViewportView(TablaImpresora);
+
+        javax.swing.GroupLayout jInternalFrame2Layout = new javax.swing.GroupLayout(jInternalFrame2.getContentPane());
+        jInternalFrame2.getContentPane().setLayout(jInternalFrame2Layout);
+        jInternalFrame2Layout.setHorizontalGroup(
+            jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane5, javax.swing.GroupLayout.DEFAULT_SIZE, 1089, Short.MAX_VALUE)
+        );
+        jInternalFrame2Layout.setVerticalGroup(
+            jInternalFrame2Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jScrollPane5, javax.swing.GroupLayout.PREFERRED_SIZE, 554, javax.swing.GroupLayout.PREFERRED_SIZE)
+        );
+
+        BuscarImpresora.setText("buscar");
+        BuscarImpresora.setEnabled(false);
+        BuscarImpresora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                BuscarImpresoraActionPerformed(evt);
+            }
+        });
+
+        MostrarTodoImpresora.setText("mostrar todo");
+        MostrarTodoImpresora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                MostrarTodoImpresoraActionPerformed(evt);
+            }
+        });
+
+        GuardarImpresora.setText("guardar cambios");
+        GuardarImpresora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                GuardarImpresoraActionPerformed(evt);
+            }
+        });
+
+        jRadioNSerie.setText("serie");
+        jRadioNSerie.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioNSerieActionPerformed(evt);
+            }
+        });
+
+        jRadioConexion.setText("conexion");
+        jRadioConexion.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jRadioConexionActionPerformed(evt);
+            }
+        });
+
+        EditarImpresora.setText("Editar Tabla");
+        EditarImpresora.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                EditarImpresoraActionPerformed(evt);
+            }
+        });
+
+        jLabel5.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
+        jLabel5.setText("Buscar por:");
 
         javax.swing.GroupLayout JframeconsultaimpresoraLayout = new javax.swing.GroupLayout(Jframeconsultaimpresora.getContentPane());
         Jframeconsultaimpresora.getContentPane().setLayout(JframeconsultaimpresoraLayout);
         JframeconsultaimpresoraLayout.setHorizontalGroup(
             JframeconsultaimpresoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(JframeconsultaimpresoraLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(JframeconsultaimpresoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(JframeconsultaimpresoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                        .addComponent(jRadioConexion)
+                        .addComponent(MostrarTodoImpresora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(GuardarImpresora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(EditarImpresora, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jRadioNSerie))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addGroup(JframeconsultaimpresoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(JframeconsultaimpresoraLayout.createSequentialGroup()
+                        .addComponent(jTextImpresora, javax.swing.GroupLayout.PREFERRED_SIZE, 133, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addComponent(BuscarImpresora, javax.swing.GroupLayout.PREFERRED_SIZE, 104, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jInternalFrame2))
+                .addContainerGap())
         );
         JframeconsultaimpresoraLayout.setVerticalGroup(
             JframeconsultaimpresoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 0, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, JframeconsultaimpresoraLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(JframeconsultaimpresoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel5, javax.swing.GroupLayout.PREFERRED_SIZE, 28, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addGroup(JframeconsultaimpresoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                        .addComponent(jTextImpresora, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addComponent(BuscarImpresora)))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(JframeconsultaimpresoraLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(JframeconsultaimpresoraLayout.createSequentialGroup()
+                        .addGap(15, 15, 15)
+                        .addComponent(jRadioNSerie, javax.swing.GroupLayout.PREFERRED_SIZE, 23, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(jRadioConexion)
+                        .addGap(27, 27, 27)
+                        .addComponent(MostrarTodoImpresora, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(39, 39, 39)
+                        .addComponent(EditarImpresora, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(GuardarImpresora, javax.swing.GroupLayout.PREFERRED_SIZE, 40, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jInternalFrame2, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(158, 158, 158))
         );
 
         jTabbedPane1.addTab("CONSULTA IMPRESORA", Jframeconsultaimpresora);
@@ -748,19 +903,7 @@ public class Principal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_comboxMousePressed
 
-    private void RadioSerieMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RadioSerieMouseClicked
-       
-        
-        
-        
-    }//GEN-LAST:event_RadioSerieMouseClicked
-
-    private void RadioNombreMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RadioNombreMouseClicked
-        // TODO add your handling code here:
-    }//GEN-LAST:event_RadioNombreMouseClicked
-
     private void RadioSerieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RadioSerieActionPerformed
-        RadioSerie.transferFocus();
         
         if (RadioSerie.isSelected()== true){
             botonActualizar.setEnabled(true);
@@ -783,18 +926,6 @@ public class Principal extends javax.swing.JFrame {
         
         
     }//GEN-LAST:event_RadioNombreActionPerformed
-
-    private void RadioSerieMousePressed(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_RadioSerieMousePressed
-       
-       
-        
-    }//GEN-LAST:event_RadioSerieMousePressed
-
-    private void RadioSerieItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_RadioSerieItemStateChanged
-       
-        
-             
-    }//GEN-LAST:event_RadioSerieItemStateChanged
 
     private void txtfbuscarequipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfbuscarequipoActionPerformed
         // TODO add your handling code here:
@@ -1241,80 +1372,8 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_BotonMostrarActionPerformed
 
     private void botonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEditarActionPerformed
-         
+        TablaMostrar.setEnabled(true);
     }//GEN-LAST:event_botonEditarActionPerformed
-
-    private void Tabla_ejemComponentAdded(java.awt.event.ContainerEvent evt) {//GEN-FIRST:event_Tabla_ejemComponentAdded
-   
-        
-        
-                              
-        
-    }//GEN-LAST:event_Tabla_ejemComponentAdded
-
-    private void JfactualizainventarioPropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_JfactualizainventarioPropertyChange
-       
-            Conexion conex = null;
-            Statement stm = null;
-            ResultSet rs = null;
-
-            conex= new Conexion();
-            modelo = new DefaultTableModel();
-            
-        Tabla_ejem.setModel(modelo);
-        modelo.addColumn("serie compu");
-        modelo.addColumn("piso");
-        modelo.addColumn("area");
-        modelo.addColumn("consultorio");
-        modelo.addColumn("subarea");
-        modelo.addColumn("nombre");
-        modelo.addColumn("cuenta");
-        modelo.addColumn("marca");
-        modelo.addColumn("modelo");
-        modelo.addColumn("mac");
-        modelo.addColumn("nni");
-        modelo.addColumn("ip");
-        modelo.addColumn("direccion ip");
-        modelo.addColumn("serie impresora");
-        modelo.addColumn("id usuario");
-         
-            
-            
-            try {
-                stm = conex.getConnection().createStatement();
-                 
-                   rs = stm.executeQuery("select * from equipo ");
-                
-                   for(int i = 0 ;rs.next(); i++){
-                   
-                     modelo.addRow(new Object[]{rs.getString("serie_compu"), rs.getString("piso"), rs.getString("area"), 
-                      rs.getString("consultorio"), rs.getString("subarea"), rs.getString("nombre"), rs.getString("cuenta"),
-                      rs.getString("marca"), rs.getString("modelo"), rs.getString("mac"), rs.getString("nni"),
-                      rs.getString("ip"), rs.getString("direccion_ip"), rs.getString("serie_impresora"), rs.getString("id_usuario")});
-                        //JOptionPane.showMessageDialog(null, "El alumno ya tiene registrada una modalidad","Información",JOptionPane.INFORMATION_MESSAGE);
-                    //Tabla.setColumnModel().setText(rs.getString("id_cliente"));
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-            }
-                        
-                        
-
-            try {
-                stm.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            try {
-                rs.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-            }
-                conex.desconectar();
-            
-        
-        
-    }//GEN-LAST:event_JfactualizainventarioPropertyChange
 
     private void jScrollPane3PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jScrollPane3PropertyChange
        
@@ -1325,7 +1384,7 @@ public class Principal extends javax.swing.JFrame {
             conex= new Conexion();
             modelo = new DefaultTableModel();
             
-        Tabla_ejem.setModel(modelo);
+        TablaUsuario.setModel(modelo);
         modelo.addColumn("serie compu");
         modelo.addColumn("piso");
         modelo.addColumn("area");
@@ -1388,7 +1447,7 @@ public class Principal extends javax.swing.JFrame {
             conex= new Conexion();
             modelo = new DefaultTableModel();
             
-        Tabla_ejem.setModel(modelo);
+        TablaUsuario.setModel(modelo);
         modelo.addColumn("serie compu");
         modelo.addColumn("piso");
         modelo.addColumn("area");
@@ -1524,6 +1583,357 @@ public class Principal extends javax.swing.JFrame {
         
     }//GEN-LAST:event_radiopendientesActionPerformed
 
+    private void MostrarTodoImpresoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_MostrarTodoImpresoraActionPerformed
+      
+            Conexion conex = null;
+            Statement stm = null;
+            ResultSet rs = null;
+
+            conex= new Conexion();
+            modelo = new DefaultTableModel();
+            
+        TablaImpresora.setModel(modelo);
+        modelo.addColumn("Serie Impresora");
+        modelo.addColumn("Marca");
+        modelo.addColumn("Modelo");
+        modelo.addColumn("Conexion");
+         
+            
+            try {
+                stm = conex.getConnection().createStatement();
+                 
+                   rs = stm.executeQuery("select * from impresora ");
+                
+                   for(int i = 0 ;rs.next(); i++){
+                   
+                     modelo.addRow(new Object[]{rs.getString("serie_impresora"), rs.getString("marca"), rs.getString("modelo"), 
+                      rs.getString("conexion")});
+                        //JOptionPane.showMessageDialog(null, "El alumno ya tiene registrada una modalidad","Información",JOptionPane.INFORMATION_MESSAGE);
+                    //Tabla.setColumnModel().setText(rs.getString("id_cliente"));
+                }
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                        
+                        
+
+            try {
+                stm.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                rs.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                conex.desconectar();
+              
+    }//GEN-LAST:event_MostrarTodoImpresoraActionPerformed
+
+    private void jRadioNSerieActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioNSerieActionPerformed
+        
+        if (jRadioNSerie.isSelected()== true){
+            BuscarImpresora.setEnabled(true);
+            jTextImpresora.setEnabled(true);
+            
+        }
+    }//GEN-LAST:event_jRadioNSerieActionPerformed
+
+    private void jRadioConexionActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jRadioConexionActionPerformed
+
+        if (jRadioConexion.isSelected()== true){
+            BuscarImpresora.setEnabled(true);
+            jTextImpresora.setEnabled(true);
+            
+        }
+    }//GEN-LAST:event_jRadioConexionActionPerformed
+
+    private void JfactualizainventarioMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JfactualizainventarioMouseEntered
+        RadioSerie.transferFocus();
+    }//GEN-LAST:event_JfactualizainventarioMouseEntered
+
+    private void JframeconsultaimpresoraMouseEntered(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_JframeconsultaimpresoraMouseEntered
+        jRadioNSerie.transferFocus();
+    }//GEN-LAST:event_JframeconsultaimpresoraMouseEntered
+
+    private void BuscarImpresoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarImpresoraActionPerformed
+        
+        if(jRadioNSerie.isSelected() == true){
+            Conexion conex = null;
+            Statement stm = null;
+            ResultSet rs = null;
+
+            conex= new Conexion();
+         modelo = new DefaultTableModel();
+            
+        TablaImpresora.setModel(modelo);
+        modelo.addColumn("serie impresora");
+        modelo.addColumn("marca");
+        modelo.addColumn("modelo");
+        modelo.addColumn("conexion");
+          TablaMostrar.setEnabled(true);
+            
+            
+            try {
+                stm = conex.getConnection().createStatement();
+                 
+                   rs = stm.executeQuery("select * from impresora " +
+                    "where serie_impresora = '" +jTextImpresora.getText()+ "'");
+                
+                   if(rs.next()){
+                   
+                     modelo.addRow(new Object[]{rs.getString("serie_impresora"), rs.getString("marca"), rs.getString("modelo"), 
+                      rs.getString("conexion")});
+                        //JOptionPane.showMessageDialog(null, "El alumno ya tiene registrada una modalidad","Información",JOptionPane.INFORMATION_MESSAGE);
+                    //Tabla.setColumnModel().setText(rs.getString("id_cliente"));
+                }
+                   else{
+                       showMessageDialog(null, "No se encuentra en la base de datos!!!");
+                       txtfbuscarequipo.setText("");
+                     
+                   }
+                   /*modelom.addTableModelListener(new TableModelListener() {
+                       
+                    @Override
+                    public void tableChanged(TableModelEvent e) {
+                        if(e.getType() == TableModelEvent.UPDATE){
+                            int columna = e.getColumn();
+                             int fila = e.getFirstRow();
+                             if(columna == 1){
+                                 String sql = "Update equipo set piso = '"+TablaMostrar.getValueAt(fila, columna)+"'";
+                                 
+                             }
+                        }
+                        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                    }
+                });*/
+                   
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                        
+                        
+
+            try {
+                stm.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                rs.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                conex.desconectar();
+            
+                    
+      
+      }
+   else if(jRadioConexion.isSelected() == true){
+            Conexion conex = null;
+            Statement stm = null;
+            ResultSet rs = null;
+
+            conex= new Conexion();
+         modelo = new DefaultTableModel();
+            
+        TablaMostrar.setModel(modelo);
+        modelo.addColumn("serie impresora");
+        modelo.addColumn("marca");
+        modelo.addColumn("modelo");
+        modelo.addColumn("conexion");
+
+            
+            
+            try {
+                stm = conex.getConnection().createStatement();
+                 
+                   rs = stm.executeQuery("select * from impresora " +
+                    "where conexion = '" +jTextImpresora.getText()+ "'");
+                
+                   if(rs.next()){
+                   
+                     modelo.addRow(new Object[]{rs.getString("serie_impresora"), rs.getString("marca"), rs.getString("modelo"), 
+                      rs.getString("conexion")});
+                        //JOptionPane.showMessageDialog(null, "El alumno ya tiene registrada una modalidad","Información",JOptionPane.INFORMATION_MESSAGE);
+                    //Tabla.setColumnModel().setText(rs.getString("id_cliente"));
+                }
+                   else{
+                       showMessageDialog(null, "No se encuentra en la base de datos!!!");
+                       txtfbuscarequipo.setText("");
+                     
+                   }
+                   /*modelom.addTableModelListener(new TableModelListener() {
+                       
+                    @Override
+                    public void tableChanged(TableModelEvent e) {
+                        if(e.getType() == TableModelEvent.UPDATE){
+                            int columna = e.getColumn();
+                             int fila = e.getFirstRow();
+                             if(columna == 1){
+                                 String sql = "Update equipo set piso = '"+TablaMostrar.getValueAt(fila, columna)+"'";
+                                 
+                             }
+                        }
+                        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                    }
+                });*/
+                   
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                        
+                        
+
+            try {
+                stm.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                rs.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                conex.desconectar();
+            
+                    
+      
+      }
+    }//GEN-LAST:event_BuscarImpresoraActionPerformed
+
+    private void GuardarImpresoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarImpresoraActionPerformed
+
+         Conexion conex = null;
+            Statement stm = null;
+            ResultSet rs = null;
+
+            conex= new Conexion();
+            modelo = new DefaultTableModel();
+            
+        TablaMostrar.setModel(modelo);
+        modelo.addColumn("serie impresora");
+        modelo.addColumn("marca");
+        modelo.addColumn("modelo");
+        modelo.addColumn("conexion");            
+            
+            try {
+                stm = conex.getConnection().createStatement();
+                 
+                   rs = stm.executeQuery("select * from impresora ");
+                 
+                if(rs.next()){
+                    if(showConfirmDialog(new JFrame(), "Alerta!!"
+                                + "\nDesea sobreecribir la informacion?", "Informacion", YES_NO_OPTION) == YES_OPTION){
+                            stm.executeUpdate("Update equipo set serie_impresora = '"+ rs.getString("serie_impresora") +"'"
+                                    + ", marca = '"+ rs.getString("marca") +"', modelo = '"+ rs.getString("modelo") +"'"
+                                    + ", conexion = '"+ rs.getString("conexion") +"'");
+                        }
+                        //JOptionPane.showMessageDialog(null, "El alumno ya tiene registrada una modalidad","Información",JOptionPane.INFORMATION_MESSAGE);
+                   jTextImpresora.setText("");
+                }
+                   
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                        
+                        
+
+            try {
+                stm.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                rs.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                conex.desconectar();
+            
+        
+        
+    }//GEN-LAST:event_GuardarImpresoraActionPerformed
+
+    private void EditarImpresoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_EditarImpresoraActionPerformed
+        GuardarImpresora.setEnabled(true);
+        TablaImpresora.setEnabled(true);
+    }//GEN-LAST:event_EditarImpresoraActionPerformed
+
+    private void BuscarUsuarioActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BuscarUsuarioActionPerformed
+
+            Conexion conex = null;
+            Statement stm = null;
+            ResultSet rs = null;
+
+            conex= new Conexion();
+         modelo = new DefaultTableModel();
+            
+        TablaUsuario.setModel(modelo);
+        modelo.addColumn("cuenta usuario");
+        modelo.addColumn("serie compu");
+        modelo.addColumn("piso");
+        modelo.addColumn("area");
+        modelo.addColumn("nombre del equipo");            
+        modelo.addColumn("marca");
+        modelo.addColumn("modelo");
+        
+            try {
+                stm = conex.getConnection().createStatement();
+                 
+                   rs = stm.executeQuery("select * from equipo " +
+                    "where usuario = '" +BuscaUsuario.getText()+ "'");
+                
+                   if(rs.next()){
+                   
+                     modelo.addRow(new Object[]{rs.getString("usuario"), rs.getString("serie_compu"), rs.getString("piso"), 
+                      rs.getString("area"),rs.getString("nombre"),rs.getString("marca"),rs.getString("modelo")});
+                        //JOptionPane.showMessageDialog(null, "El alumno ya tiene registrada una modalidad","Información",JOptionPane.INFORMATION_MESSAGE);
+                    //Tabla.setColumnModel().setText(rs.getString("id_cliente"));
+                }
+                   else{
+                       showMessageDialog(null, "No se encuentra en la base de datos!!!");
+                       BuscaUsuario.setText("");
+                     
+                   }
+                   /*modelom.addTableModelListener(new TableModelListener() {
+                       
+                    @Override
+                    public void tableChanged(TableModelEvent e) {
+                        if(e.getType() == TableModelEvent.UPDATE){
+                            int columna = e.getColumn();
+                             int fila = e.getFirstRow();
+                             if(columna == 1){
+                                 String sql = "Update equipo set piso = '"+TablaMostrar.getValueAt(fila, columna)+"'";
+                                 
+                             }
+                        }
+                        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                    }
+                });*/
+                   
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                        
+                        
+
+            try {
+                stm.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                rs.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                conex.desconectar();
+            
+                      
+    }//GEN-LAST:event_BuscarUsuarioActionPerformed
+
     public void formatoequipo(){
         Tabla.getColumnModel().getColumn(0).setPreferredWidth(80);
         Tabla.getColumnModel().getColumn(1).setPreferredWidth(20);
@@ -1550,22 +1960,30 @@ public class Principal extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton BotonMostrar;
+    private javax.swing.JTextField BuscaUsuario;
+    private javax.swing.JButton BuscarImpresora;
+    private javax.swing.JButton BuscarUsuario;
+    private javax.swing.JButton EditarImpresora;
+    private javax.swing.JButton GuardarImpresora;
     private javax.swing.JInternalFrame Jfactualizainventario;
     private javax.swing.JInternalFrame Jfconsultainventario;
     private javax.swing.JInternalFrame Jframeconsultaimpresora;
     private javax.swing.JInternalFrame Jframeconsultausuario;
+    private javax.swing.JButton MostrarTodoImpresora;
     private javax.swing.JRadioButton RadioNNI;
     private javax.swing.JRadioButton RadioNombre;
     private javax.swing.JRadioButton RadioSerie;
     private javax.swing.JTable TAREAS;
     private javax.swing.JTable Tabla;
+    private javax.swing.JTable TablaImpresora;
     private javax.swing.JTable TablaMostrar;
-    private javax.swing.JTable Tabla_ejem;
+    private javax.swing.JTable TablaUsuario;
     private javax.swing.JButton botonActualizar;
     private javax.swing.JButton botonBuscar;
     private javax.swing.JButton botonEditar;
     private javax.swing.JButton btn_regresar;
     private javax.swing.JComboBox<String> combox;
+    private javax.swing.ButtonGroup grupoImpresora;
     private javax.swing.ButtonGroup grupoRadios;
     private javax.swing.ButtonGroup grupoUsuarios;
     private javax.swing.ButtonGroup grupotarea;
@@ -1573,16 +1991,24 @@ public class Principal extends javax.swing.JFrame {
     private javax.swing.JInternalFrame internalframetareas;
     private javax.swing.JButton jButton1;
     private javax.swing.JInternalFrame jInternalFrame1;
+    private javax.swing.JInternalFrame jInternalFrame2;
+    private javax.swing.JInternalFrame jInternalFrame3;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
+    private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JPanel jPanel2;
+    private javax.swing.JRadioButton jRadioConexion;
+    private javax.swing.JRadioButton jRadioNSerie;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
     private javax.swing.JScrollPane jScrollPane4;
+    private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTextField jTextImpresora;
     private javax.swing.JInternalFrame jframetareas;
     private javax.swing.JLabel lblcontador;
     private javax.swing.JRadioButton radioCarlos;
