@@ -5,7 +5,7 @@
  */
 package HGR46;
 
-import empresa.Insertar;
+//import empresa.Insertar;
 import java.awt.Toolkit;
 import java.sql.ResultSet;
 import java.sql.SQLException;
@@ -84,7 +84,7 @@ public class Principal extends javax.swing.JFrame {
                    
                    
             } catch (SQLException ex) {
-                Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
                         
                         
@@ -92,12 +92,12 @@ public class Principal extends javax.swing.JFrame {
             try {
                 stm.close();
             } catch (SQLException ex) {
-                Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
             try {
                 rs.close();
             } catch (SQLException ex) {
-                Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
                 conex.desconectar();
 //Fin de conteo de equipos de computo
@@ -880,7 +880,7 @@ public class Principal extends javax.swing.JFrame {
                 });*/
                    
             } catch (SQLException ex) {
-                Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
                         
                         
@@ -888,12 +888,12 @@ public class Principal extends javax.swing.JFrame {
             try {
                 stm.close();
             } catch (SQLException ex) {
-                Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
             try {
                 rs.close();
             } catch (SQLException ex) {
-                Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
                 conex.desconectar();
             
@@ -947,7 +947,7 @@ public class Principal extends javax.swing.JFrame {
                      
                    }
             } catch (SQLException ex) {
-                Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
                         
                         
@@ -955,12 +955,12 @@ public class Principal extends javax.swing.JFrame {
             try {
                 stm.close();
             } catch (SQLException ex) {
-                Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
             try {
                 rs.close();
             } catch (SQLException ex) {
-                Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
                 conex.desconectar();
             
@@ -1014,7 +1014,7 @@ public class Principal extends javax.swing.JFrame {
                      
                    }
             } catch (SQLException ex) {
-                Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
                         
                         
@@ -1022,12 +1022,12 @@ public class Principal extends javax.swing.JFrame {
             try {
                 stm.close();
             } catch (SQLException ex) {
-                Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
             try {
                 rs.close();
             } catch (SQLException ex) {
-                Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
                 conex.desconectar();
             
@@ -1082,7 +1082,7 @@ public class Principal extends javax.swing.JFrame {
                     //Tabla.setColumnModel().setText(rs.getString("id_cliente"));
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
                         
                         
@@ -1090,12 +1090,12 @@ public class Principal extends javax.swing.JFrame {
             try {
                 stm.close();
             } catch (SQLException ex) {
-                Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
             try {
                 rs.close();
             } catch (SQLException ex) {
-                Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
                 conex.desconectar();
             
@@ -1153,7 +1153,7 @@ public class Principal extends javax.swing.JFrame {
                 }
                    
             } catch (SQLException ex) {
-                Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
                         
                         
@@ -1161,12 +1161,12 @@ public class Principal extends javax.swing.JFrame {
             try {
                 stm.close();
             } catch (SQLException ex) {
-                Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
             try {
                 rs.close();
             } catch (SQLException ex) {
-                Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
                 conex.desconectar();
             
@@ -1220,7 +1220,7 @@ public class Principal extends javax.swing.JFrame {
                 }
                    
             } catch (SQLException ex) {
-                Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
                         
                         
@@ -1228,12 +1228,12 @@ public class Principal extends javax.swing.JFrame {
             try {
                 stm.close();
             } catch (SQLException ex) {
-                Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
             try {
                 rs.close();
             } catch (SQLException ex) {
-                Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
                 conex.desconectar();
         
@@ -1295,7 +1295,7 @@ public class Principal extends javax.swing.JFrame {
                     //Tabla.setColumnModel().setText(rs.getString("id_cliente"));
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
                         
                         
@@ -1303,12 +1303,12 @@ public class Principal extends javax.swing.JFrame {
             try {
                 stm.close();
             } catch (SQLException ex) {
-                Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
             try {
                 rs.close();
             } catch (SQLException ex) {
-                Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
                 conex.desconectar();
             
@@ -1359,7 +1359,7 @@ public class Principal extends javax.swing.JFrame {
                     //Tabla.setColumnModel().setText(rs.getString("id_cliente"));
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
                         
                         
@@ -1367,12 +1367,12 @@ public class Principal extends javax.swing.JFrame {
             try {
                 stm.close();
             } catch (SQLException ex) {
-                Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
             try {
                 rs.close();
             } catch (SQLException ex) {
-                Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
                 conex.desconectar();
             
@@ -1422,7 +1422,7 @@ public class Principal extends javax.swing.JFrame {
                     //Tabla.setColumnModel().setText(rs.getString("id_cliente"));
                 }
             } catch (SQLException ex) {
-                Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
                         
                         
@@ -1430,12 +1430,12 @@ public class Principal extends javax.swing.JFrame {
             try {
                 stm.close();
             } catch (SQLException ex) {
-                Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
             try {
                 rs.close();
             } catch (SQLException ex) {
-                Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
                 conex.desconectar();
             
@@ -1466,7 +1466,7 @@ public class Principal extends javax.swing.JFrame {
                    
                    
             } catch (SQLException ex) {
-                Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
                         
                         
@@ -1474,12 +1474,12 @@ public class Principal extends javax.swing.JFrame {
             try {
                 stm.close();
             } catch (SQLException ex) {
-                Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
             try {
                 rs.close();
             } catch (SQLException ex) {
-                Logger.getLogger(Insertar.class.getName()).log(Level.SEVERE, null, ex);
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
                 conex.desconectar();
     }//GEN-LAST:event_lblcontadorComponentShown
