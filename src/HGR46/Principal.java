@@ -324,17 +324,6 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jInternalFrame1.setVisible(true);
-        jInternalFrame1.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                jInternalFrame1PropertyChange(evt);
-            }
-        });
-
-        jScrollPane3.addPropertyChangeListener(new java.beans.PropertyChangeListener() {
-            public void propertyChange(java.beans.PropertyChangeEvent evt) {
-                jScrollPane3PropertyChange(evt);
-            }
-        });
 
         TablaMostrar.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -465,7 +454,7 @@ public class Principal extends javax.swing.JFrame {
             jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame3Layout.createSequentialGroup()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 565, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 0, Short.MAX_VALUE))
+                .addGap(0, 4, Short.MAX_VALUE))
         );
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
@@ -971,7 +960,6 @@ public class Principal extends javax.swing.JFrame {
         modelom.addColumn("direccion ip");
         modelom.addColumn("serie impresora");
         modelom.addColumn("id usuario");
-          TablaMostrar.setEnabled(true);
             
             
             try {
@@ -1054,7 +1042,6 @@ public class Principal extends javax.swing.JFrame {
         modelom.addColumn("direccion ip");
         modelom.addColumn("serie impresora");
         modelom.addColumn("id usuario");
-          TablaMostrar.setEnabled(true);
             
             
             try {
@@ -1121,7 +1108,6 @@ public class Principal extends javax.swing.JFrame {
         modelo.addColumn("direccion ip");
         modelo.addColumn("serie impresora");
         modelo.addColumn("id usuario");
-        TablaMostrar.setEnabled(true);
             
             
             try {
@@ -1234,7 +1220,9 @@ public class Principal extends javax.swing.JFrame {
     }//GEN-LAST:event_jTabbedPane1StateChanged
 
     private void botonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActualizarActionPerformed
-       
+
+        TablaMostrar.setEnabled(false);
+        
          Conexion conex = null;
             Statement stm = null;
             ResultSet rs = null;
@@ -1331,7 +1319,6 @@ public class Principal extends javax.swing.JFrame {
         modelom.addColumn("direccion ip");
         modelom.addColumn("serie impresora");
         modelom.addColumn("id usuario");
-        TablaMostrar.setEnabled(true);
         
             
             
@@ -1374,132 +1361,6 @@ public class Principal extends javax.swing.JFrame {
     private void botonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEditarActionPerformed
         TablaMostrar.setEnabled(true);
     }//GEN-LAST:event_botonEditarActionPerformed
-
-    private void jScrollPane3PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jScrollPane3PropertyChange
-       
-        Conexion conex = null;
-            Statement stm = null;
-            ResultSet rs = null;
-
-            conex= new Conexion();
-            modelo = new DefaultTableModel();
-            
-        TablaUsuario.setModel(modelo);
-        modelo.addColumn("serie compu");
-        modelo.addColumn("piso");
-        modelo.addColumn("area");
-        modelo.addColumn("consultorio");
-        modelo.addColumn("subarea");
-        modelo.addColumn("nombre");
-        modelo.addColumn("cuenta");
-        modelo.addColumn("marca");
-        modelo.addColumn("modelo");
-        modelo.addColumn("mac");
-        modelo.addColumn("nni");
-        modelo.addColumn("ip");
-        modelo.addColumn("direccion ip");
-        modelo.addColumn("serie impresora");
-        modelo.addColumn("id usuario");
-         
-            
-            
-            try {
-                stm = conex.getConnection().createStatement();
-                 
-                   rs = stm.executeQuery("select * from equipo ");
-                
-                   for(int i = 0 ;rs.next(); i++){
-                   
-                     modelo.addRow(new Object[]{rs.getString("serie_compu"), rs.getString("piso"), rs.getString("area"), 
-                      rs.getString("consultorio"), rs.getString("subarea"), rs.getString("nombre"), rs.getString("cuenta"),
-                      rs.getString("marca"), rs.getString("modelo"), rs.getString("mac"), rs.getString("nni"),
-                      rs.getString("ip"), rs.getString("direccion_ip"), rs.getString("serie_impresora"), rs.getString("id_usuario")});
-                        //JOptionPane.showMessageDialog(null, "El alumno ya tiene registrada una modalidad","Información",JOptionPane.INFORMATION_MESSAGE);
-                    //Tabla.setColumnModel().setText(rs.getString("id_cliente"));
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-            }
-                        
-                        
-
-            try {
-                stm.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            try {
-                rs.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-            }
-                conex.desconectar();
-            
-        
-    }//GEN-LAST:event_jScrollPane3PropertyChange
-
-    private void jInternalFrame1PropertyChange(java.beans.PropertyChangeEvent evt) {//GEN-FIRST:event_jInternalFrame1PropertyChange
-        
-        Conexion conex = null;
-            Statement stm = null;
-            ResultSet rs = null;
-
-            conex= new Conexion();
-            modelo = new DefaultTableModel();
-            
-        TablaUsuario.setModel(modelo);
-        modelo.addColumn("serie compu");
-        modelo.addColumn("piso");
-        modelo.addColumn("area");
-        modelo.addColumn("consultorio");
-        modelo.addColumn("subarea");
-        modelo.addColumn("nombre");
-        modelo.addColumn("cuenta");
-        modelo.addColumn("marca");
-        modelo.addColumn("modelo");
-        modelo.addColumn("mac");
-        modelo.addColumn("nni");
-        modelo.addColumn("ip");
-        modelo.addColumn("direccion ip");
-        modelo.addColumn("serie impresora");
-        modelo.addColumn("id usuario");
-         
-            
-            
-            try {
-                stm = conex.getConnection().createStatement();
-                 
-                   rs = stm.executeQuery("select * from equipo ");
-                
-                   for(int i = 0 ;rs.next(); i++){
-                   
-                     modelo.addRow(new Object[]{rs.getString("serie_compu"), rs.getString("piso"), rs.getString("area"), 
-                      rs.getString("consultorio"), rs.getString("subarea"), rs.getString("nombre"), rs.getString("cuenta"),
-                      rs.getString("marca"), rs.getString("modelo"), rs.getString("mac"), rs.getString("nni"),
-                      rs.getString("ip"), rs.getString("direccion_ip"), rs.getString("serie_impresora"), rs.getString("id_usuario")});
-                        //JOptionPane.showMessageDialog(null, "El alumno ya tiene registrada una modalidad","Información",JOptionPane.INFORMATION_MESSAGE);
-                    //Tabla.setColumnModel().setText(rs.getString("id_cliente"));
-                }
-            } catch (SQLException ex) {
-                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-            }
-                        
-                        
-
-            try {
-                stm.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-            }
-            try {
-                rs.close();
-            } catch (SQLException ex) {
-                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
-            }
-                conex.desconectar();
-            
-        
-    }//GEN-LAST:event_jInternalFrame1PropertyChange
 
     private void lblcontadorAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lblcontadorAncestorAdded
                 
@@ -1805,6 +1666,8 @@ public class Principal extends javax.swing.JFrame {
 
     private void GuardarImpresoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_GuardarImpresoraActionPerformed
 
+        TablaImpresora.setEnabled(false);
+         
          Conexion conex = null;
             Statement stm = null;
             ResultSet rs = null;
