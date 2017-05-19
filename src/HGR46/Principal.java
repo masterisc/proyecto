@@ -117,7 +117,89 @@ public class Principal extends javax.swing.JFrame {
 
        // tablaActualizar.setEditingColumn(0);
     }
+public void actualizaequipo(){
+    
+     Conexion conex = null;
+            Statement stm = null;
+            ResultSet rs = null;
 
+            conex= new Conexion();
+         modelom = new DefaultTableModel();
+            
+        TablaMostrar.setModel(modelom);
+        modelom.addColumn("serie compu");
+        modelom.addColumn("piso");
+        modelom.addColumn("area");
+        modelom.addColumn("consultorio");
+        modelom.addColumn("subarea");
+        modelom.addColumn("nombre");
+        modelom.addColumn("cuenta");
+        modelom.addColumn("marca");
+        modelom.addColumn("modelo");
+        modelom.addColumn("mac");
+        modelom.addColumn("nni");
+        modelom.addColumn("ip");
+        modelom.addColumn("direccion ip");
+        modelom.addColumn("serie impresora");
+        modelom.addColumn("id usuario");
+            
+            
+            try {
+                stm = conex.getConnection().createStatement();
+                 
+                   rs = stm.executeQuery("select * from equipo ");
+                
+                   if(rs.next()){
+                   
+                     modelom.addRow(new Object[]{rs.getString("serie_compu"), rs.getString("piso"), rs.getString("area"), 
+                      rs.getString("consultorio"), rs.getString("subarea"), rs.getString("nombre"), rs.getString("cuenta"),
+                      rs.getString("marca"), rs.getString("modelo"), rs.getString("mac"), rs.getString("nni"),
+                      rs.getString("ip"), rs.getString("direccion_ip"), rs.getString("serie_impresora"), rs.getInt("id_usuario")});
+                        //JOptionPane.showMessageDialog(null, "El alumno ya tiene registrada una modalidad","Información",JOptionPane.INFORMATION_MESSAGE);
+                    //Tabla.setColumnModel().setText(rs.getString("id_cliente"));
+                }
+                   else{
+                       showMessageDialog(null, "No se encuentra en la base de datos!!!");
+                       txtfbuscarequipo.setText("");
+                     
+                   }
+                   /*modelom.addTableModelListener(new TableModelListener() {
+                       
+                    @Override
+                    public void tableChanged(TableModelEvent e) {
+                        if(e.getType() == TableModelEvent.UPDATE){
+                            int columna = e.getColumn();
+                             int fila = e.getFirstRow();
+                             if(columna == 1){
+                                 String sql = "Update equipo set piso = '"+TablaMostrar.getValueAt(fila, columna)+"'";
+                                 
+                             }
+                        }
+                        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+                    }
+                });*/
+                   
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                        
+                        
+
+            try {
+                stm.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                rs.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                conex.desconectar();
+            
+    
+}
+    
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
@@ -318,6 +400,11 @@ public class Principal extends javax.swing.JFrame {
         });
 
         jButton1.setText("Insertar equipo");
+        jButton1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton1ActionPerformed(evt);
+            }
+        });
 
         BotonMostrar.setFont(new java.awt.Font("Tahoma", 0, 12)); // NOI18N
         BotonMostrar.setText("Mostrar todo");
@@ -342,16 +429,40 @@ public class Principal extends javax.swing.JFrame {
 
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8", "Title 9", "Title 10", "Title 11", "Title 12"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8", "Title 9", "Title 10", "Title 11", "Title 12", "Title 13", "Title 14", "Title 15"
             }
-        ));
-        TablaMostrar.setCellSelectionEnabled(true);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
         TablaMostrar.setCursor(new java.awt.Cursor(java.awt.Cursor.DEFAULT_CURSOR));
         TablaMostrar.setDropMode(javax.swing.DropMode.INSERT);
         TablaMostrar.setFocusable(false);
         TablaMostrar.setGridColor(new java.awt.Color(0, 153, 255));
         TablaMostrar.getTableHeader().setReorderingAllowed(false);
         jScrollPane3.setViewportView(TablaMostrar);
+        if (TablaMostrar.getColumnModel().getColumnCount() > 0) {
+            TablaMostrar.getColumnModel().getColumn(0).setResizable(false);
+            TablaMostrar.getColumnModel().getColumn(1).setResizable(false);
+            TablaMostrar.getColumnModel().getColumn(2).setResizable(false);
+            TablaMostrar.getColumnModel().getColumn(3).setResizable(false);
+            TablaMostrar.getColumnModel().getColumn(4).setResizable(false);
+            TablaMostrar.getColumnModel().getColumn(5).setResizable(false);
+            TablaMostrar.getColumnModel().getColumn(6).setResizable(false);
+            TablaMostrar.getColumnModel().getColumn(7).setResizable(false);
+            TablaMostrar.getColumnModel().getColumn(8).setResizable(false);
+            TablaMostrar.getColumnModel().getColumn(9).setResizable(false);
+            TablaMostrar.getColumnModel().getColumn(10).setResizable(false);
+            TablaMostrar.getColumnModel().getColumn(11).setResizable(false);
+            TablaMostrar.getColumnModel().getColumn(12).setResizable(false);
+            TablaMostrar.getColumnModel().getColumn(13).setResizable(false);
+            TablaMostrar.getColumnModel().getColumn(14).setResizable(false);
+        }
 
         javax.swing.GroupLayout jInternalFrame1Layout = new javax.swing.GroupLayout(jInternalFrame1.getContentPane());
         jInternalFrame1.getContentPane().setLayout(jInternalFrame1Layout);
@@ -463,7 +574,7 @@ public class Principal extends javax.swing.JFrame {
             jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame3Layout.createSequentialGroup()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 565, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 144, Short.MAX_VALUE))
+                .addGap(0, 204, Short.MAX_VALUE))
         );
 
         BuscaUsuario.setToolTipText("Buscar a un Usuario!!");
@@ -1005,9 +1116,9 @@ public class Principal extends javax.swing.JFrame {
                         .addGap(123, 123, 123))
                     .addGroup(layout.createSequentialGroup()
                         .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1267, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(107, 107, 107)
+                        .addGap(18, 18, 18)
                         .addComponent(btn_regresar)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(21, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1022,13 +1133,13 @@ public class Principal extends javax.swing.JFrame {
                     .addComponent(jLabel3, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addComponent(btn_regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(80, 80, 80))
-                    .addGroup(layout.createSequentialGroup()
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 711, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                        .addComponent(btn_regresar, javax.swing.GroupLayout.PREFERRED_SIZE, 59, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(66, 66, 66))))
         );
 
         pack();
@@ -1358,6 +1469,9 @@ public class Principal extends javax.swing.JFrame {
     private void botonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActualizarActionPerformed
 
         TablaMostrar.setEnabled(false);
+        botonEditar.setEnabled(true);
+        botonActualizar.setEnabled(false);
+        BotonMostrar.setEnabled(true);
         
          Conexion conex = null;
             Statement stm = null;
@@ -1497,6 +1611,8 @@ public class Principal extends javax.swing.JFrame {
     private void botonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEditarActionPerformed
         TablaMostrar.setEnabled(true);
         botonActualizar.setEnabled(true);
+        botonEditar.setEnabled(false);
+        BotonMostrar.setEnabled(false);
     }//GEN-LAST:event_botonEditarActionPerformed
 
     private void lblcontadorAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lblcontadorAncestorAdded
@@ -1885,7 +2001,7 @@ public class Principal extends javax.swing.JFrame {
                 
                    if(rs.next()){
                    
-                     modelo.addRow(new Object[]{rs.getString("usuario"), rs.getString("serie_compu"), rs.getString("piso"), 
+                     modelo.addRow(new Object[]{rs.getString("cuenta"), rs.getString("serie_compu"), rs.getString("piso"), 
                       rs.getString("area"),rs.getString("nombre"),rs.getString("marca"),rs.getString("modelo")});
                         //JOptionPane.showMessageDialog(null, "El alumno ya tiene registrada una modalidad","Información",JOptionPane.INFORMATION_MESSAGE);
                     //Tabla.setColumnModel().setText(rs.getString("id_cliente"));
@@ -1985,6 +2101,11 @@ public class Principal extends javax.swing.JFrame {
          BuscarImpresora.setEnabled(true);
         }
     }//GEN-LAST:event_jTextImpresoraKeyTyped
+
+    private void jButton1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton1ActionPerformed
+         InsertarEquipo insertarequipo= new InsertarEquipo();
+         insertarequipo.setVisible(true);
+    }//GEN-LAST:event_jButton1ActionPerformed
 
     public void formatoequipo(){
         Tabla.getColumnModel().getColumn(0).setPreferredWidth(80);

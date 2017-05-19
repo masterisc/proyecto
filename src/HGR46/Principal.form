@@ -57,9 +57,9 @@
                   </Group>
                   <Group type="102" alignment="0" attributes="0">
                       <Component id="jTabbedPane1" min="-2" pref="1267" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="107" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
                       <Component id="btn_regresar" min="-2" max="-2" attributes="0"/>
-                      <EmptySpace max="32767" attributes="0"/>
+                      <EmptySpace pref="21" max="32767" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -81,14 +81,14 @@
               </Group>
               <Group type="103" groupAlignment="0" attributes="0">
                   <Group type="102" attributes="0">
-                      <EmptySpace max="32767" attributes="0"/>
-                      <Component id="btn_regresar" min="-2" pref="59" max="-2" attributes="0"/>
-                      <EmptySpace min="-2" pref="80" max="-2" attributes="0"/>
-                  </Group>
-                  <Group type="102" alignment="0" attributes="0">
                       <EmptySpace max="-2" attributes="0"/>
                       <Component id="jTabbedPane1" min="-2" pref="711" max="-2" attributes="0"/>
                       <EmptySpace max="32767" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="1" attributes="0">
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="btn_regresar" min="-2" pref="59" max="-2" attributes="0"/>
+                      <EmptySpace min="-2" pref="66" max="-2" attributes="0"/>
                   </Group>
               </Group>
           </Group>
@@ -436,6 +436,9 @@
                   <Properties>
                     <Property name="text" type="java.lang.String" value="Insertar equipo"/>
                   </Properties>
+                  <Events>
+                    <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jButton1ActionPerformed"/>
+                  </Events>
                 </Component>
                 <Component class="javax.swing.JButton" name="BotonMostrar">
                   <Properties>
@@ -493,80 +496,97 @@
                         <Component class="javax.swing.JTable" name="TablaMostrar">
                           <Properties>
                             <Property name="model" type="javax.swing.table.TableModel" editor="org.netbeans.modules.form.editors2.TableModelEditor">
-                              <Table columnCount="12" rowCount="0">
-                                <Column editable="true" title="Title 1" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 2" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 3" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 4" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 5" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 6" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 7" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 8" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 9" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 10" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 11" type="java.lang.Object"/>
-                                <Column editable="true" title="Title 12" type="java.lang.Object"/>
+                              <Table columnCount="15" rowCount="0">
+                                <Column editable="false" title="Title 1" type="java.lang.Object"/>
+                                <Column editable="false" title="Title 2" type="java.lang.Object"/>
+                                <Column editable="false" title="Title 3" type="java.lang.Object"/>
+                                <Column editable="false" title="Title 4" type="java.lang.Object"/>
+                                <Column editable="false" title="Title 5" type="java.lang.Object"/>
+                                <Column editable="false" title="Title 6" type="java.lang.Object"/>
+                                <Column editable="false" title="Title 7" type="java.lang.Object"/>
+                                <Column editable="false" title="Title 8" type="java.lang.Object"/>
+                                <Column editable="false" title="Title 9" type="java.lang.Object"/>
+                                <Column editable="false" title="Title 10" type="java.lang.Object"/>
+                                <Column editable="false" title="Title 11" type="java.lang.Object"/>
+                                <Column editable="false" title="Title 12" type="java.lang.Object"/>
+                                <Column editable="false" title="Title 13" type="java.lang.Object"/>
+                                <Column editable="false" title="Title 14" type="java.lang.Object"/>
+                                <Column editable="false" title="Title 15" type="java.lang.Object"/>
                               </Table>
                             </Property>
-                            <Property name="cellSelectionEnabled" type="boolean" value="true"/>
                             <Property name="columnModel" type="javax.swing.table.TableColumnModel" editor="org.netbeans.modules.form.editors2.TableColumnModelEditor">
                               <TableColumnModel selectionModel="0">
-                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                                   <Title/>
                                   <Editor/>
                                   <Renderer/>
                                 </Column>
-                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                                   <Title/>
                                   <Editor/>
                                   <Renderer/>
                                 </Column>
-                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                                   <Title/>
                                   <Editor/>
                                   <Renderer/>
                                 </Column>
-                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                                   <Title/>
                                   <Editor/>
                                   <Renderer/>
                                 </Column>
-                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                                   <Title/>
                                   <Editor/>
                                   <Renderer/>
                                 </Column>
-                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                                   <Title/>
                                   <Editor/>
                                   <Renderer/>
                                 </Column>
-                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                                   <Title/>
                                   <Editor/>
                                   <Renderer/>
                                 </Column>
-                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                                   <Title/>
                                   <Editor/>
                                   <Renderer/>
                                 </Column>
-                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                                   <Title/>
                                   <Editor/>
                                   <Renderer/>
                                 </Column>
-                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                                   <Title/>
                                   <Editor/>
                                   <Renderer/>
                                 </Column>
-                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                                   <Title/>
                                   <Editor/>
                                   <Renderer/>
                                 </Column>
-                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="true">
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
+                                  <Title/>
+                                  <Editor/>
+                                  <Renderer/>
+                                </Column>
+                                <Column maxWidth="-1" minWidth="-1" prefWidth="-1" resizable="false">
                                   <Title/>
                                   <Editor/>
                                   <Renderer/>
@@ -659,7 +679,7 @@
                   <Group type="103" groupAlignment="0" attributes="0">
                       <Group type="102" alignment="0" attributes="0">
                           <Component id="jScrollPane2" min="-2" pref="565" max="-2" attributes="0"/>
-                          <EmptySpace min="0" pref="144" max="32767" attributes="0"/>
+                          <EmptySpace min="0" pref="204" max="32767" attributes="0"/>
                       </Group>
                   </Group>
                 </DimensionLayout>
