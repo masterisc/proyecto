@@ -10,6 +10,9 @@ import java.awt.Toolkit;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.text.DateFormat;
+import java.text.Format;
+import java.text.SimpleDateFormat;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JFrame;
@@ -46,7 +49,6 @@ public class Principal extends javax.swing.JFrame {
         grupoUsuarios.add(radioCarlos);
         grupoUsuarios.add(radioCristal);
         grupoUsuarios.add(radioHernandez);
-        grupoUsuarios.add(radioGrupal);
         grupotarea.add(radionuevatarea);
         grupotarea.add(radiopendientes);
         grupoImpresora.add(jRadioNSerie);
@@ -55,16 +57,15 @@ public class Principal extends javax.swing.JFrame {
         grupoRespaldo.add(RCuentas);
         grupoRespaldo.add(REquipos);
         grupoRespaldo.add(RImpresora);
+        jCUsuarios.addItem("");
+        jCUsuarios.addItem("Eduardo Mora");
+        jCUsuarios.addItem("Carlos Lopez");
+        jCUsuarios.addItem("Cristal Montiel");
+        jCUsuarios.addItem("Carlos Hernandez");        
         txtfbuscarequipo.setEnabled(false);
         TablaMostrar.setEnabled(false);
-        botonActualizar.setEnabled(false);
         lblcontador.setVisible(true);
         Tareas.setVisible(false);
-        radioEduardo.setVisible(false);
-        radioCarlos.setVisible(false);
-        radioCristal.setVisible(false);
-        radioHernandez.setVisible(false);
-        radioGrupal.setVisible(false);
         Pendientes.setVisible(false);
         jTextImpresora.setEnabled(false);
         TablaImpresora.setEnabled(false);
@@ -73,6 +74,7 @@ public class Principal extends javax.swing.JFrame {
         RespaldoImpresora.setVisible(false);
         RespaldoEquipos.setVisible(false);
         RespaldoCuentas.setVisible(false);
+        RadioBotones.setVisible(false); 
        
         formatoequipo();
         
@@ -222,7 +224,6 @@ public void actualizaequipo(){
         RadioNNI = new javax.swing.JRadioButton();
         jLabel2 = new javax.swing.JLabel();
         txtfbuscarequipo = new javax.swing.JTextField();
-        botonActualizar = new javax.swing.JButton();
         botonBuscar = new javax.swing.JButton();
         jButton1 = new javax.swing.JButton();
         BotonMostrar = new javax.swing.JButton();
@@ -250,22 +251,29 @@ public void actualizaequipo(){
         EditarImpresora = new javax.swing.JButton();
         jLabel5 = new javax.swing.JLabel();
         jframetareas = new javax.swing.JInternalFrame();
-        radioEduardo = new javax.swing.JRadioButton();
-        radioCarlos = new javax.swing.JRadioButton();
-        radioCristal = new javax.swing.JRadioButton();
-        radioHernandez = new javax.swing.JRadioButton();
-        radioGrupal = new javax.swing.JRadioButton();
         radiopendientes = new javax.swing.JRadioButton();
         radionuevatarea = new javax.swing.JRadioButton();
-        jDesktopPane2 = new javax.swing.JDesktopPane();
+        desktopPane_deInternalFrame = new javax.swing.JDesktopPane();
+        Tareas = new javax.swing.JInternalFrame();
+        jLabel8 = new javax.swing.JLabel();
+        jLabel9 = new javax.swing.JLabel();
+        jLabel10 = new javax.swing.JLabel();
+        jScrollPane11 = new javax.swing.JScrollPane();
+        TaTareas = new javax.swing.JTextArea();
+        jCUsuarios = new javax.swing.JComboBox<>();
+        Fecha = new com.toedter.calendar.JDateChooser();
+        jButton3 = new javax.swing.JButton();
         Pendientes = new javax.swing.JInternalFrame();
         jScrollPane10 = new javax.swing.JScrollPane();
-        jTable2 = new javax.swing.JTable();
-        Tareas = new javax.swing.JInternalFrame();
-        jScrollPane4 = new javax.swing.JScrollPane();
-        jTable1 = new javax.swing.JTable();
+        Tabla_Pendientes = new javax.swing.JTable();
+        desktopPane_Botones = new javax.swing.JDesktopPane();
+        RadioBotones = new javax.swing.JPanel();
+        radioCristal = new javax.swing.JRadioButton();
+        radioHernandez = new javax.swing.JRadioButton();
+        radioCarlos = new javax.swing.JRadioButton();
+        radioEduardo = new javax.swing.JRadioButton();
         jframeRespaldo = new javax.swing.JInternalFrame();
-        jDesktopPane1 = new javax.swing.JDesktopPane();
+        desktopPane_deTablas = new javax.swing.JDesktopPane();
         RespaldoUsuarios = new javax.swing.JInternalFrame();
         jScrollPane9 = new javax.swing.JScrollPane();
         TablaRespaldoUsuarios = new javax.swing.JTable();
@@ -277,7 +285,7 @@ public void actualizaequipo(){
         TablaRespaldoCuentas = new javax.swing.JTable();
         RespaldoEquipos = new javax.swing.JInternalFrame();
         jScrollPane7 = new javax.swing.JScrollPane();
-        TablasRespaldoEquipos = new javax.swing.JTable();
+        TablaRespaldoEquipos = new javax.swing.JTable();
         RUsuarios = new javax.swing.JRadioButton();
         REquipos = new javax.swing.JRadioButton();
         RCuentas = new javax.swing.JRadioButton();
@@ -288,6 +296,7 @@ public void actualizaequipo(){
         lblcontador = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setTitle("Sistema de Control de Inventario ver 0.5");
         setBackground(new java.awt.Color(255, 255, 255));
         setPreferredSize(new java.awt.Dimension(1366, 768));
         setSize(new java.awt.Dimension(1366, 768));
@@ -304,7 +313,7 @@ public void actualizaequipo(){
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel1.setForeground(new java.awt.Color(0, 204, 204));
-        jLabel1.setText("Selecciona una opción?");
+        jLabel1.setText("Selecciona una opción");
 
         jTabbedPane1.setMinimumSize(new java.awt.Dimension(1267, 719));
         jTabbedPane1.setPreferredSize(new java.awt.Dimension(1267, 400));
@@ -384,13 +393,6 @@ public void actualizaequipo(){
             }
         });
 
-        botonActualizar.setText("Guardar Cambios");
-        botonActualizar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                botonActualizarActionPerformed(evt);
-            }
-        });
-
         botonBuscar.setText("Buscar");
         botonBuscar.setEnabled(false);
         botonBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -399,7 +401,7 @@ public void actualizaequipo(){
             }
         });
 
-        jButton1.setText("Insertar equipo");
+        jButton1.setText("Realizar cambios");
         jButton1.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButton1ActionPerformed(evt);
@@ -499,8 +501,7 @@ public void actualizaequipo(){
                     .addGroup(jPanel1Layout.createSequentialGroup()
                         .addContainerGap()
                         .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
-                            .addComponent(botonActualizar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                            .addComponent(jButton1, javax.swing.GroupLayout.DEFAULT_SIZE, 115, Short.MAX_VALUE)
                             .addComponent(botonEditar, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jInternalFrame1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
@@ -527,13 +528,11 @@ public void actualizaequipo(){
                         .addComponent(RadioNNI)
                         .addGap(46, 46, 46)
                         .addComponent(BotonMostrar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addGap(58, 58, 58)
+                        .addGap(94, 94, 94)
                         .addComponent(botonEditar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(botonActualizar, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addGap(18, 18, 18)
                         .addComponent(jButton1, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                        .addContainerGap(254, Short.MAX_VALUE))
+                        .addContainerGap(255, Short.MAX_VALUE))
                     .addComponent(jInternalFrame1)))
         );
 
@@ -561,8 +560,27 @@ public void actualizaequipo(){
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        TablaUsuario.setFocusable(false);
+        TablaUsuario.getTableHeader().setReorderingAllowed(false);
         jScrollPane2.setViewportView(TablaUsuario);
+        if (TablaUsuario.getColumnModel().getColumnCount() > 0) {
+            TablaUsuario.getColumnModel().getColumn(0).setResizable(false);
+            TablaUsuario.getColumnModel().getColumn(1).setResizable(false);
+            TablaUsuario.getColumnModel().getColumn(2).setResizable(false);
+            TablaUsuario.getColumnModel().getColumn(3).setResizable(false);
+            TablaUsuario.getColumnModel().getColumn(4).setResizable(false);
+            TablaUsuario.getColumnModel().getColumn(5).setResizable(false);
+            TablaUsuario.getColumnModel().getColumn(6).setResizable(false);
+        }
 
         javax.swing.GroupLayout jInternalFrame3Layout = new javax.swing.GroupLayout(jInternalFrame3.getContentPane());
         jInternalFrame3.getContentPane().setLayout(jInternalFrame3Layout);
@@ -574,10 +592,15 @@ public void actualizaequipo(){
             jInternalFrame3Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jInternalFrame3Layout.createSequentialGroup()
                 .addComponent(jScrollPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 565, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addGap(0, 204, Short.MAX_VALUE))
+                .addGap(0, 984, Short.MAX_VALUE))
         );
 
         BuscaUsuario.setToolTipText("Buscar a un Usuario!!");
+        BuscaUsuario.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyTyped(java.awt.event.KeyEvent evt) {
+                BuscaUsuarioKeyTyped(evt);
+            }
+        });
 
         jLabel4.setFont(new java.awt.Font("Tahoma", 0, 14)); // NOI18N
         jLabel4.setText("Buscar Usuario");
@@ -637,8 +660,24 @@ public void actualizaequipo(){
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        TablaImpresora.setFocusable(false);
+        TablaImpresora.getTableHeader().setReorderingAllowed(false);
         jScrollPane5.setViewportView(TablaImpresora);
+        if (TablaImpresora.getColumnModel().getColumnCount() > 0) {
+            TablaImpresora.getColumnModel().getColumn(0).setResizable(false);
+            TablaImpresora.getColumnModel().getColumn(1).setResizable(false);
+            TablaImpresora.getColumnModel().getColumn(2).setResizable(false);
+            TablaImpresora.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         javax.swing.GroupLayout jInternalFrame2Layout = new javax.swing.GroupLayout(jInternalFrame2.getContentPane());
         jInternalFrame2.getContentPane().setLayout(jInternalFrame2Layout);
@@ -760,26 +799,6 @@ public void actualizaequipo(){
         jframetareas.setPreferredSize(new java.awt.Dimension(1366, 600));
         jframetareas.setVisible(true);
 
-        radioEduardo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        radioEduardo.setText("Eduardo Mora");
-        radioEduardo.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                radioEduardoActionPerformed(evt);
-            }
-        });
-
-        radioCarlos.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        radioCarlos.setText("Carlos Lopez");
-
-        radioCristal.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        radioCristal.setText("Cristal Montiel");
-
-        radioHernandez.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        radioHernandez.setText("Carlos Hernandez");
-
-        radioGrupal.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
-        radioGrupal.setText("Grupal");
-
         radiopendientes.setText("PENDIENTES");
         radiopendientes.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -794,21 +813,111 @@ public void actualizaequipo(){
             }
         });
 
-        jDesktopPane2.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        desktopPane_deInternalFrame.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+
+        Tareas.setTitle("Tareas");
+        Tareas.setAlignmentX(0.0F);
+        Tareas.setAlignmentY(0.0F);
+        Tareas.setVisible(true);
+
+        jLabel8.setText("Usuarios");
+
+        jLabel9.setText("Fecha");
+
+        jLabel10.setText("Tarea");
+
+        TaTareas.setColumns(20);
+        TaTareas.setRows(5);
+        jScrollPane11.setViewportView(TaTareas);
+
+        jCUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCUsuariosActionPerformed(evt);
+            }
+        });
+
+        jButton3.setText("Guardar");
+        jButton3.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButton3ActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout TareasLayout = new javax.swing.GroupLayout(Tareas.getContentPane());
+        Tareas.getContentPane().setLayout(TareasLayout);
+        TareasLayout.setHorizontalGroup(
+            TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TareasLayout.createSequentialGroup()
+                .addGap(83, 83, 83)
+                .addGroup(TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(TareasLayout.createSequentialGroup()
+                        .addGroup(TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jLabel8, javax.swing.GroupLayout.PREFERRED_SIZE, 49, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jLabel9, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE))
+                        .addGap(18, 18, 18)
+                        .addGroup(TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING, false)
+                            .addComponent(Fecha, javax.swing.GroupLayout.DEFAULT_SIZE, 156, Short.MAX_VALUE)
+                            .addComponent(jCUsuarios, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)))
+                    .addGroup(TareasLayout.createSequentialGroup()
+                        .addComponent(jLabel10, javax.swing.GroupLayout.PREFERRED_SIZE, 48, javax.swing.GroupLayout.PREFERRED_SIZE)
+                        .addGap(18, 18, 18)
+                        .addGroup(TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(jButton3, javax.swing.GroupLayout.PREFERRED_SIZE, 920, javax.swing.GroupLayout.PREFERRED_SIZE)
+                            .addComponent(jScrollPane11, javax.swing.GroupLayout.PREFERRED_SIZE, 920, javax.swing.GroupLayout.PREFERRED_SIZE))))
+                .addContainerGap(18, Short.MAX_VALUE))
+        );
+        TareasLayout.setVerticalGroup(
+            TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(TareasLayout.createSequentialGroup()
+                .addGap(42, 42, 42)
+                .addGroup(TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jLabel8)
+                    .addComponent(jCUsuarios, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(57, 57, 57)
+                .addGroup(TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jLabel9)
+                    .addComponent(Fecha, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(42, 42, 42)
+                .addGroup(TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(TareasLayout.createSequentialGroup()
+                        .addComponent(jLabel10)
+                        .addGap(0, 0, Short.MAX_VALUE))
+                    .addComponent(jScrollPane11, javax.swing.GroupLayout.DEFAULT_SIZE, 372, Short.MAX_VALUE))
+                .addGap(18, 18, 18)
+                .addComponent(jButton3)
+                .addGap(26, 26, 26))
+        );
+
+        desktopPane_deInternalFrame.add(Tareas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1103, 650));
 
         Pendientes.setTitle("Pendientes");
         Pendientes.setAlignmentX(0.0F);
         Pendientes.setVisible(true);
 
-        jTable2.setModel(new javax.swing.table.DefaultTableModel(
+        Tabla_Pendientes.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+                "Title 1", "Title 2", "Title 3"
             }
-        ));
-        jScrollPane10.setViewportView(jTable2);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        Tabla_Pendientes.setFocusable(false);
+        Tabla_Pendientes.getTableHeader().setReorderingAllowed(false);
+        jScrollPane10.setViewportView(Tabla_Pendientes);
+        if (Tabla_Pendientes.getColumnModel().getColumnCount() > 0) {
+            Tabla_Pendientes.getColumnModel().getColumn(0).setResizable(false);
+            Tabla_Pendientes.getColumnModel().getColumn(1).setResizable(false);
+            Tabla_Pendientes.getColumnModel().getColumn(2).setResizable(false);
+        }
 
         javax.swing.GroupLayout PendientesLayout = new javax.swing.GroupLayout(Pendientes.getContentPane());
         Pendientes.getContentPane().setLayout(PendientesLayout);
@@ -821,35 +930,70 @@ public void actualizaequipo(){
             .addComponent(jScrollPane10, javax.swing.GroupLayout.DEFAULT_SIZE, 622, Short.MAX_VALUE)
         );
 
-        jDesktopPane2.add(Pendientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1103, 652));
+        desktopPane_deInternalFrame.add(Pendientes, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1103, 652));
 
-        Tareas.setTitle("Tareas");
-        Tareas.setAlignmentX(0.0F);
-        Tareas.setAlignmentY(0.0F);
-        Tareas.setVisible(true);
+        desktopPane_Botones.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
-        jTable1.setModel(new javax.swing.table.DefaultTableModel(
-            new Object [][] {
-
-            },
-            new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4"
+        radioCristal.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        radioCristal.setText("Cristal Montiel");
+        radioCristal.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioCristalActionPerformed(evt);
             }
-        ));
-        jScrollPane4.setViewportView(jTable1);
+        });
 
-        javax.swing.GroupLayout TareasLayout = new javax.swing.GroupLayout(Tareas.getContentPane());
-        Tareas.getContentPane().setLayout(TareasLayout);
-        TareasLayout.setHorizontalGroup(
-            TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 1087, Short.MAX_VALUE)
+        radioHernandez.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        radioHernandez.setText("Carlos Hernandez");
+        radioHernandez.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioHernandezActionPerformed(evt);
+            }
+        });
+
+        radioCarlos.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        radioCarlos.setText("Carlos Lopez");
+        radioCarlos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioCarlosActionPerformed(evt);
+            }
+        });
+
+        radioEduardo.setFont(new java.awt.Font("Tahoma", 1, 11)); // NOI18N
+        radioEduardo.setText("Eduardo Mora");
+        radioEduardo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                radioEduardoActionPerformed(evt);
+            }
+        });
+
+        javax.swing.GroupLayout RadioBotonesLayout = new javax.swing.GroupLayout(RadioBotones);
+        RadioBotones.setLayout(RadioBotonesLayout);
+        RadioBotonesLayout.setHorizontalGroup(
+            RadioBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RadioBotonesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(RadioBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                    .addComponent(radioEduardo, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(radioCarlos, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(radioHernandez, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addComponent(radioCristal, javax.swing.GroupLayout.Alignment.LEADING, javax.swing.GroupLayout.PREFERRED_SIZE, 125, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addContainerGap(9, Short.MAX_VALUE))
         );
-        TareasLayout.setVerticalGroup(
-            TareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jScrollPane4, javax.swing.GroupLayout.DEFAULT_SIZE, 620, Short.MAX_VALUE)
+        RadioBotonesLayout.setVerticalGroup(
+            RadioBotonesLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addGroup(RadioBotonesLayout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(radioEduardo)
+                .addGap(18, 18, 18)
+                .addComponent(radioCarlos)
+                .addGap(19, 19, 19)
+                .addComponent(radioCristal)
+                .addGap(18, 18, 18)
+                .addComponent(radioHernandez)
+                .addContainerGap(200, Short.MAX_VALUE))
         );
 
-        jDesktopPane2.add(Tareas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1103, 650));
+        desktopPane_Botones.add(RadioBotones, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 140, 354));
 
         javax.swing.GroupLayout jframetareasLayout = new javax.swing.GroupLayout(jframetareas.getContentPane());
         jframetareas.getContentPane().setLayout(jframetareasLayout);
@@ -857,15 +1001,14 @@ public void actualizaequipo(){
             jframetareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jframetareasLayout.createSequentialGroup()
                 .addGroup(jframetareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(radioCarlos, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(radioEduardo, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addComponent(radioGrupal)
-                    .addComponent(radiopendientes)
-                    .addComponent(radioHernandez, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(radioCristal, javax.swing.GroupLayout.PREFERRED_SIZE, 141, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(radionuevatarea))
+                    .addComponent(desktopPane_Botones, javax.swing.GroupLayout.DEFAULT_SIZE, 0, Short.MAX_VALUE)
+                    .addGroup(jframetareasLayout.createSequentialGroup()
+                        .addGroup(jframetareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
+                            .addComponent(radiopendientes, javax.swing.GroupLayout.Alignment.LEADING)
+                            .addComponent(radionuevatarea, javax.swing.GroupLayout.Alignment.LEADING))
+                        .addGap(0, 42, Short.MAX_VALUE)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jDesktopPane2, javax.swing.GroupLayout.PREFERRED_SIZE, 1103, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(desktopPane_deInternalFrame, javax.swing.GroupLayout.PREFERRED_SIZE, 1103, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
         jframetareasLayout.setVerticalGroup(
             jframetareasLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -874,25 +1017,16 @@ public void actualizaequipo(){
                 .addComponent(radionuevatarea)
                 .addGap(20, 20, 20)
                 .addComponent(radiopendientes)
-                .addGap(153, 153, 153)
-                .addComponent(radioGrupal)
-                .addGap(18, 18, 18)
-                .addComponent(radioEduardo)
-                .addGap(18, 18, 18)
-                .addComponent(radioCarlos)
-                .addGap(19, 19, 19)
-                .addComponent(radioCristal)
-                .addGap(18, 18, 18)
-                .addComponent(radioHernandez)
-                .addContainerGap(165, Short.MAX_VALUE))
-            .addComponent(jDesktopPane2, javax.swing.GroupLayout.Alignment.TRAILING)
+                .addGap(152, 152, 152)
+                .addComponent(desktopPane_Botones))
+            .addComponent(desktopPane_deInternalFrame, javax.swing.GroupLayout.Alignment.TRAILING)
         );
 
         jTabbedPane1.addTab("TAREAS", jframetareas);
 
         jframeRespaldo.setVisible(true);
 
-        jDesktopPane1.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
+        desktopPane_deTablas.setLayout(new org.netbeans.lib.awtextra.AbsoluteLayout());
 
         RespaldoUsuarios.setTitle("Respaldo Usuario");
         RespaldoUsuarios.setAlignmentX(0.0F);
@@ -904,10 +1038,28 @@ public void actualizaequipo(){
 
             },
             new String [] {
-                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7"
+                "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        TablaRespaldoUsuarios.setFocusable(false);
+        TablaRespaldoUsuarios.getTableHeader().setReorderingAllowed(false);
         jScrollPane9.setViewportView(TablaRespaldoUsuarios);
+        if (TablaRespaldoUsuarios.getColumnModel().getColumnCount() > 0) {
+            TablaRespaldoUsuarios.getColumnModel().getColumn(0).setResizable(false);
+            TablaRespaldoUsuarios.getColumnModel().getColumn(1).setResizable(false);
+            TablaRespaldoUsuarios.getColumnModel().getColumn(2).setResizable(false);
+            TablaRespaldoUsuarios.getColumnModel().getColumn(3).setResizable(false);
+            TablaRespaldoUsuarios.getColumnModel().getColumn(4).setResizable(false);
+            TablaRespaldoUsuarios.getColumnModel().getColumn(5).setResizable(false);
+        }
 
         javax.swing.GroupLayout RespaldoUsuariosLayout = new javax.swing.GroupLayout(RespaldoUsuarios.getContentPane());
         RespaldoUsuarios.getContentPane().setLayout(RespaldoUsuariosLayout);
@@ -924,7 +1076,7 @@ public void actualizaequipo(){
                 .addComponent(jScrollPane9, javax.swing.GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE))
         );
 
-        jDesktopPane1.add(RespaldoUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1065, 656));
+        desktopPane_deTablas.add(RespaldoUsuarios, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1065, 656));
 
         RespaldoImpresora.setTitle("Respaldo Impresora");
         RespaldoImpresora.setVisible(true);
@@ -936,8 +1088,26 @@ public void actualizaequipo(){
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        TablaRespaldoImpresora.setFocusable(false);
+        TablaRespaldoImpresora.getTableHeader().setReorderingAllowed(false);
         jScrollPane8.setViewportView(TablaRespaldoImpresora);
+        if (TablaRespaldoImpresora.getColumnModel().getColumnCount() > 0) {
+            TablaRespaldoImpresora.getColumnModel().getColumn(0).setResizable(false);
+            TablaRespaldoImpresora.getColumnModel().getColumn(1).setResizable(false);
+            TablaRespaldoImpresora.getColumnModel().getColumn(2).setResizable(false);
+            TablaRespaldoImpresora.getColumnModel().getColumn(3).setResizable(false);
+            TablaRespaldoImpresora.getColumnModel().getColumn(4).setResizable(false);
+            TablaRespaldoImpresora.getColumnModel().getColumn(5).setResizable(false);
+        }
 
         javax.swing.GroupLayout RespaldoImpresoraLayout = new javax.swing.GroupLayout(RespaldoImpresora.getContentPane());
         RespaldoImpresora.getContentPane().setLayout(RespaldoImpresoraLayout);
@@ -950,7 +1120,7 @@ public void actualizaequipo(){
             .addComponent(jScrollPane8, javax.swing.GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE)
         );
 
-        jDesktopPane1.add(RespaldoImpresora, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1065, 656));
+        desktopPane_deTablas.add(RespaldoImpresora, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1065, 656));
 
         RespaldoCuentas.setTitle("Respaldo Cuentas");
         RespaldoCuentas.setVisible(true);
@@ -962,8 +1132,24 @@ public void actualizaequipo(){
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
-        ));
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        TablaRespaldoCuentas.setFocusable(false);
+        TablaRespaldoCuentas.getTableHeader().setReorderingAllowed(false);
         jScrollPane6.setViewportView(TablaRespaldoCuentas);
+        if (TablaRespaldoCuentas.getColumnModel().getColumnCount() > 0) {
+            TablaRespaldoCuentas.getColumnModel().getColumn(0).setResizable(false);
+            TablaRespaldoCuentas.getColumnModel().getColumn(1).setResizable(false);
+            TablaRespaldoCuentas.getColumnModel().getColumn(2).setResizable(false);
+            TablaRespaldoCuentas.getColumnModel().getColumn(3).setResizable(false);
+        }
 
         javax.swing.GroupLayout RespaldoCuentasLayout = new javax.swing.GroupLayout(RespaldoCuentas.getContentPane());
         RespaldoCuentas.getContentPane().setLayout(RespaldoCuentasLayout);
@@ -976,20 +1162,30 @@ public void actualizaequipo(){
             .addComponent(jScrollPane6, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 626, Short.MAX_VALUE)
         );
 
-        jDesktopPane1.add(RespaldoCuentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1065, 656));
+        desktopPane_deTablas.add(RespaldoCuentas, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1065, 656));
 
         RespaldoEquipos.setTitle("Respaldo Equipos");
         RespaldoEquipos.setVisible(true);
 
-        TablasRespaldoEquipos.setModel(new javax.swing.table.DefaultTableModel(
+        TablaRespaldoEquipos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
 
             },
             new String [] {
                 "Title 1", "Title 2", "Title 3", "Title 4", "Title 5", "Title 6", "Title 7", "Title 8", "Title 9", "Title 10", "Title 11", "Title 12", "Title 13", "Title 14", "Title 15", "Title 16", "Title 17", "Title 18"
             }
-        ));
-        jScrollPane7.setViewportView(TablasRespaldoEquipos);
+        ) {
+            boolean[] canEdit = new boolean [] {
+                false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false, false
+            };
+
+            public boolean isCellEditable(int rowIndex, int columnIndex) {
+                return canEdit [columnIndex];
+            }
+        });
+        TablaRespaldoEquipos.setFocusable(false);
+        TablaRespaldoEquipos.getTableHeader().setReorderingAllowed(false);
+        jScrollPane7.setViewportView(TablaRespaldoEquipos);
 
         javax.swing.GroupLayout RespaldoEquiposLayout = new javax.swing.GroupLayout(RespaldoEquipos.getContentPane());
         RespaldoEquipos.getContentPane().setLayout(RespaldoEquiposLayout);
@@ -1002,7 +1198,7 @@ public void actualizaequipo(){
             .addComponent(jScrollPane7, javax.swing.GroupLayout.DEFAULT_SIZE, 622, Short.MAX_VALUE)
         );
 
-        jDesktopPane1.add(RespaldoEquipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1065, 652));
+        desktopPane_deTablas.add(RespaldoEquipos, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 1065, 652));
 
         RUsuarios.setText("Respaldo Usuarios");
         RUsuarios.addActionListener(new java.awt.event.ActionListener() {
@@ -1058,7 +1254,7 @@ public void actualizaequipo(){
                         .addGap(50, 50, 50)
                         .addComponent(jLabel6, javax.swing.GroupLayout.PREFERRED_SIZE, 76, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addGap(30, 30, 30)
-                .addComponent(jDesktopPane1))
+                .addComponent(desktopPane_deTablas))
         );
         jframeRespaldoLayout.setVerticalGroup(
             jframeRespaldoLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1076,7 +1272,7 @@ public void actualizaequipo(){
                 .addGap(18, 18, 18)
                 .addComponent(RImpresora)
                 .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
-            .addComponent(jDesktopPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 653, Short.MAX_VALUE)
+            .addComponent(desktopPane_deTablas, javax.swing.GroupLayout.DEFAULT_SIZE, 653, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("RESPALDO", jframeRespaldo);
@@ -1118,7 +1314,7 @@ public void actualizaequipo(){
                         .addComponent(jTabbedPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 1267, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addGap(18, 18, 18)
                         .addComponent(btn_regresar)
-                        .addContainerGap(21, Short.MAX_VALUE))))
+                        .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -1466,60 +1662,25 @@ public void actualizaequipo(){
         
     }//GEN-LAST:event_jTabbedPane1StateChanged
 
-    private void botonActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonActualizarActionPerformed
-
-        TablaMostrar.setEnabled(false);
-        botonEditar.setEnabled(true);
-        botonActualizar.setEnabled(false);
-        BotonMostrar.setEnabled(true);
-        
-         Conexion conex = null;
+    public void actualizacontador(){
+            
+            Conexion conex = null;
             Statement stm = null;
             ResultSet rs = null;
 
-            conex= new Conexion();
-            modelom = new DefaultTableModel();
-            
-        TablaMostrar.setModel(modelom);
-        modelom.addColumn("serie compu");
-        modelom.addColumn("piso");
-        modelom.addColumn("area");
-        modelom.addColumn("consultorio");
-        modelom.addColumn("subarea");
-        modelom.addColumn("nombre");
-        modelom.addColumn("cuenta");
-        modelom.addColumn("marca");
-        modelom.addColumn("modelo");
-        modelom.addColumn("mac");
-        modelom.addColumn("nni");
-        modelom.addColumn("ip");
-        modelom.addColumn("direccion ip");
-        modelom.addColumn("serie impresora");
-        modelom.addColumn("id usuario");
-         
-            
-            
+            conex= new Conexion(); 
+             
+
             try {
                 stm = conex.getConnection().createStatement();
                  
-                   rs = stm.executeQuery("select * from equipo ");
-                 
-                if(rs.next()){
-                    if(showConfirmDialog(new JFrame(), "Alerta!!"
-                                + "\nDesea sobreecribir la informacion?", "Informacion", YES_NO_OPTION) == YES_OPTION){
-                            stm.executeUpdate("Update equipo set serie_compu = '"+ rs.getString("serie_compu") +"'"
-                                    + ", piso = '"+ rs.getString("piso") +"', area = '"+ rs.getString("area") +"'"
-                                    + ", consultorio = '"+ rs.getString("consultorio") +"', subarea = '"+ rs.getString("subarea") + "'"
-                                    + ", nombre = '"+ rs.getString("nombre") +"', cuenta = '" + rs.getString("cuenta") + "', marca = '"+ rs.getString("marca") +"'"
-                                    + ", modelo = '"+ rs.getString("modelo") +"', mac = '" + rs.getString("mac") + "'"
-                                    + ", nni = '"+ rs.getString("nni") +"', ip = '" + rs.getString("ip") + "'"
-                                    + ", direccion_ip = '"+ rs.getString("direccion_ip") +"', serie_impresora = '" + rs.getString("serie_impresora") + "'"
-                                    + ", id_usuario = '"+ rs.getInt("id_usuario") + "'"
-                                    + ",where serie_compu = '"+ rs.getString("serie_compu") +"'");
-                        }
-                        //JOptionPane.showMessageDialog(null, "El alumno ya tiene registrada una modalidad","Información",JOptionPane.INFORMATION_MESSAGE);
-                   txtfbuscarequipo.setText("");
-                }
+                   rs = stm.executeQuery("select count(serie_compu) from equipo ");
+                  if(rs.next()){
+                      String contador = rs.getString("count(serie_compu)");
+                      lblcontador.setText(contador);
+                  }
+                   
+                   
                    
             } catch (SQLException ex) {
                 Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
@@ -1538,14 +1699,11 @@ public void actualizaequipo(){
                 Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
                 conex.desconectar();
-            
-        
-        
-    }//GEN-LAST:event_botonActualizarActionPerformed
-
+        }
+    
     private void BotonMostrarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_BotonMostrarActionPerformed
-       
-        Conexion conex = null;
+        actualizacontador();        
+            Conexion conex = null;
             Statement stm = null;
             ResultSet rs = null;
 
@@ -1609,10 +1767,12 @@ public void actualizaequipo(){
     }//GEN-LAST:event_BotonMostrarActionPerformed
 
     private void botonEditarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_botonEditarActionPerformed
+       AgregarEquipo agregarequipo = new AgregarEquipo();
+        agregarequipo.setVisible(true);
         TablaMostrar.setEnabled(true);
-        botonActualizar.setEnabled(true);
+        //botonActualizar.setEnabled(true);
         botonEditar.setEnabled(false);
-        BotonMostrar.setEnabled(false);
+        //BotonMostrar.setEnabled(false);
     }//GEN-LAST:event_botonEditarActionPerformed
 
     private void lblcontadorAncestorAdded(javax.swing.event.AncestorEvent evt) {//GEN-FIRST:event_lblcontadorAncestorAdded
@@ -1657,28 +1817,13 @@ public void actualizaequipo(){
                 conex.desconectar();
     }//GEN-LAST:event_lblcontadorComponentShown
 
-    private void radioEduardoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioEduardoActionPerformed
-       
-        if (radioEduardo.isSelected()== true){
-            botonActualizar.setEnabled(true);
-            txtfbuscarequipo.setEnabled(true);
-            txtfbuscarequipo.setEditable(true);
-            botonBuscar.setEnabled(true);
-            
-        }        
-        
-    }//GEN-LAST:event_radioEduardoActionPerformed
-
     private void radionuevatareaActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radionuevatareaActionPerformed
         
         if (radionuevatarea.isSelected()== true){
             Tareas.setVisible(true);
             Pendientes.setVisible(false);
-            radioEduardo.setVisible(true);
-            radioCarlos.setVisible(true);
-            radioCristal.setVisible(true);
-            radioHernandez.setVisible(true);
-            radioGrupal.setVisible(true);
+            
+            RadioBotones.setVisible(false);            
         }     
         
     }//GEN-LAST:event_radionuevatareaActionPerformed
@@ -1688,11 +1833,8 @@ public void actualizaequipo(){
         if (radiopendientes.isSelected()== true){
             Pendientes.setVisible(true);
             Tareas.setVisible(false);
-            radioEduardo.setVisible(true);
-            radioCarlos.setVisible(true);
-            radioCristal.setVisible(true);
-            radioHernandez.setVisible(true);
-            radioGrupal.setVisible(true);
+
+            RadioBotones.setVisible(true);             
         }     
         
     }//GEN-LAST:event_radiopendientesActionPerformed
@@ -2010,23 +2152,7 @@ public void actualizaequipo(){
                        showMessageDialog(null, "No se encuentra en la base de datos!!!");
                        BuscaUsuario.setText("");
                      
-                   }
-                   /*modelom.addTableModelListener(new TableModelListener() {
-                       
-                    @Override
-                    public void tableChanged(TableModelEvent e) {
-                        if(e.getType() == TableModelEvent.UPDATE){
-                            int columna = e.getColumn();
-                             int fila = e.getFirstRow();
-                             if(columna == 1){
-                                 String sql = "Update equipo set piso = '"+TablaMostrar.getValueAt(fila, columna)+"'";
-                                 
-                             }
-                        }
-                        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
-                    }
-                });*/
-                   
+                   }                   
             } catch (SQLException ex) {
                 Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
             }
@@ -2054,6 +2180,55 @@ public void actualizaequipo(){
         RespaldoImpresora.setVisible(false);
         RespaldoEquipos.setVisible(false);
         RespaldoCuentas.setVisible(false);
+        
+        
+            Conexion conex = null;
+            Statement stm = null;
+            ResultSet rs = null;
+
+            conex= new Conexion();
+         modelo = new DefaultTableModel();
+            
+        TablaRespaldoUsuarios.setModel(modelo);
+        modelo.addColumn("tipo de usuario");
+        modelo.addColumn("contraseña");
+        modelo.addColumn("usuario");
+        modelo.addColumn("nombre");            
+        modelo.addColumn("fecha");
+        modelo.addColumn("accion");
+        
+            try {
+                stm = conex.getConnection().createStatement();
+                 
+                   rs = stm.executeQuery("select * from usuario_respaldo ");
+                
+                    for(int i= 0; rs.next(); i++){
+                   
+                     modelo.addRow(new Object[]{rs.getString("tipo"), rs.getString("contrasena"), rs.getString("usuario"), 
+                      rs.getString("nombre"),rs.getString("fecha"),rs.getString("accion")});
+                        //JOptionPane.showMessageDialog(null, "El alumno ya tiene registrada una modalidad","Información",JOptionPane.INFORMATION_MESSAGE);
+                    //Tabla.setColumnModel().setText(rs.getString("id_cliente"));
+                }
+                   
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                        
+                        
+
+            try {
+                stm.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                rs.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                conex.desconectar();
+        
+        
     }//GEN-LAST:event_RUsuariosActionPerformed
 
     private void REquiposActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_REquiposActionPerformed
@@ -2061,7 +2236,71 @@ public void actualizaequipo(){
         
         RespaldoUsuarios.setVisible(false);
         RespaldoImpresora.setVisible(false);
-        RespaldoCuentas.setVisible(false);    
+        RespaldoCuentas.setVisible(false); 
+        
+         Conexion conex = null;
+            Statement stm = null;
+            ResultSet rs = null;
+
+            conex= new Conexion();
+             
+         modelom = new DefaultTableModel();
+            
+        TablaRespaldoEquipos.setModel(modelom);
+        modelom.addColumn("serie compu");
+        modelom.addColumn("piso");
+        modelom.addColumn("area");
+        modelom.addColumn("consultorio");
+        modelom.addColumn("subarea");
+        modelom.addColumn("nombre");
+        modelom.addColumn("cuenta");
+        modelom.addColumn("marca");
+        modelom.addColumn("modelo");
+        modelom.addColumn("mac");
+        modelom.addColumn("nni");
+        modelom.addColumn("ip");
+        modelom.addColumn("direccion ip");
+        modelom.addColumn("serie impresora");
+        modelom.addColumn("id usuario");
+        modelom.addColumn("fecha");
+        modelom.addColumn("accion");
+            
+            
+            try {
+                stm = conex.getConnection().createStatement();
+                 
+                   rs = stm.executeQuery("select * from equipo_respaldo ");
+                
+                   for(int i= 0; rs.next(); i++){
+                   
+                     modelom.addRow(new Object[]{rs.getString("serie_compu"), rs.getString("piso"), rs.getString("area"), 
+                      rs.getString("consultorio"), rs.getString("subarea"), rs.getString("nombre"), rs.getString("cuenta"),
+                      rs.getString("marca"), rs.getString("modelo"), rs.getString("mac"), rs.getString("nni"),
+                      rs.getString("ip"), rs.getString("direccion_ip"), rs.getString("serie_impresora"), rs.getInt("id_usuario"),
+                      rs.getInt("fecha"), rs.getInt("accion")});
+                        //JOptionPane.showMessageDialog(null, "El alumno ya tiene registrada una modalidad","Información",JOptionPane.INFORMATION_MESSAGE);
+                    //Tabla.setColumnModel().setText(rs.getString("id_cliente"));
+                }
+                   
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                        
+                        
+
+            try {
+                stm.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                rs.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                conex.desconectar();
+        
+    
     }//GEN-LAST:event_REquiposActionPerformed
 
     private void RCuentasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RCuentasActionPerformed
@@ -2069,7 +2308,55 @@ public void actualizaequipo(){
         
         RespaldoUsuarios.setVisible(false);
         RespaldoImpresora.setVisible(false);
-        RespaldoEquipos.setVisible(false);        
+        RespaldoEquipos.setVisible(false);
+
+
+            Conexion conex = null;
+            Statement stm = null;
+            ResultSet rs = null;
+
+            conex= new Conexion();
+         modelo = new DefaultTableModel();
+            
+        TablaRespaldoCuentas.setModel(modelo);
+        modelo.addColumn("cuenta usuario");
+        modelo.addColumn("cuenta contraseña");
+        modelo.addColumn("fecha");
+        modelo.addColumn("accion");
+
+        
+            try {
+                stm = conex.getConnection().createStatement();
+                 
+                   rs = stm.executeQuery("select * from cuenta_respaldo ");
+                
+                   for(int i= 0; rs.next(); i++){
+                   
+                     modelo.addRow(new Object[]{rs.getString("cuenta_usuario"), rs.getString("cuenta_contrasena"), rs.getString("fecha"), 
+                      rs.getString("accion")});
+                        //JOptionPane.showMessageDialog(null, "El alumno ya tiene registrada una modalidad","Información",JOptionPane.INFORMATION_MESSAGE);
+                    //Tabla.setColumnModel().setText(rs.getString("id_cliente"));
+                }
+                   
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                        
+                        
+
+            try {
+                stm.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                rs.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                conex.desconectar();
+        
+        
     }//GEN-LAST:event_RCuentasActionPerformed
 
     private void RImpresoraActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_RImpresoraActionPerformed
@@ -2077,7 +2364,56 @@ public void actualizaequipo(){
         
         RespaldoUsuarios.setVisible(false);
         RespaldoEquipos.setVisible(false);
-        RespaldoCuentas.setVisible(false);        
+        RespaldoCuentas.setVisible(false);
+
+            Conexion conex = null;
+            Statement stm = null;
+            ResultSet rs = null;
+
+            conex= new Conexion();
+         modelo = new DefaultTableModel();
+            
+        TablaRespaldoImpresora.setModel(modelo);
+        modelo.addColumn("conexion");
+        modelo.addColumn("modelo");
+        modelo.addColumn("marca");
+        modelo.addColumn("serie_impresora");        
+        modelo.addColumn("fecha");
+        modelo.addColumn("accion");
+
+        
+            try {
+                stm = conex.getConnection().createStatement();
+                 
+                   rs = stm.executeQuery("select * from impresora_respaldo ");
+                
+                   for(int i= 0; rs.next(); i++){
+                   
+                     modelo.addRow(new Object[]{rs.getString("conexion"), rs.getString("modelo"), rs.getString("marca"), 
+                      rs.getString("serie_impresora"), rs.getString("fecha"), rs.getString("accion")});
+                        //JOptionPane.showMessageDialog(null, "El alumno ya tiene registrada una modalidad","Información",JOptionPane.INFORMATION_MESSAGE);
+                    //Tabla.setColumnModel().setText(rs.getString("id_cliente"));
+                }
+                   
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                        
+                        
+
+            try {
+                stm.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                rs.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                conex.desconectar();
+    
+        
     }//GEN-LAST:event_RImpresoraActionPerformed
 
     private void txtfbuscarequipoKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_txtfbuscarequipoKeyTyped
@@ -2106,6 +2442,258 @@ public void actualizaequipo(){
          InsertarEquipo insertarequipo= new InsertarEquipo();
          insertarequipo.setVisible(true);
     }//GEN-LAST:event_jButton1ActionPerformed
+
+    private void jButton3ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButton3ActionPerformed
+            String a,b;
+            DateFormat formatter = new SimpleDateFormat("yyyy-MM-dd");
+            a=formatter.format(Fecha.getDate());
+             showMessageDialog(null, jCUsuarios.getSelectedIndex());
+                showMessageDialog(null, jCUsuarios.getSelectedItem());
+                showMessageDialog(null, TaTareas.getText());
+            showMessageDialog(null,a);
+            b="'"+a+"'";
+            showMessageDialog(null,b);
+            Conexion conex = null;
+            Statement stm = null;
+            ResultSet rs = null;
+
+            conex= new Conexion();
+            
+            try {
+                stm = conex.getConnection().createStatement();
+                 
+                stm.executeUpdate("insert into tareas(id_usuario,nombre,tarea,fecha) values ('"+jCUsuarios.getSelectedIndex()+"',"
+                        + "'"+jCUsuarios.getSelectedItem()+"',"
+                        + "'"+TaTareas.getText()+"','"+b+"')");
+               
+                
+                 /*
+stm.executeUpdate("insert into tareas(id_usuario,nombre,tarea,fecha) values (4,'Eduardo Mora','hasidhoad','2017/05/04')");*/
+                
+                   
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                        
+                        
+
+            try {
+                stm.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                rs.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                conex.desconectar();
+            
+    }//GEN-LAST:event_jButton3ActionPerformed
+
+    private void BuscaUsuarioKeyTyped(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_BuscaUsuarioKeyTyped
+        int evitador_de_espacios;
+        evitador_de_espacios = evt.getKeyCode();
+        if(BuscaUsuario.equals(" ") || evitador_de_espacios == 32){
+            BuscarUsuario.setEnabled(false);
+        }
+        else{
+            BuscarUsuario.setEnabled(true);
+        }
+    }//GEN-LAST:event_BuscaUsuarioKeyTyped
+
+    private void radioEduardoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioEduardoActionPerformed
+            Conexion conex = null;
+            Statement stm = null;
+            ResultSet rs = null;
+
+            conex= new Conexion();
+         modelo = new DefaultTableModel();
+            
+        Tabla_Pendientes.setModel(modelo);
+        modelo.addColumn("id de usuario");
+        modelo.addColumn("nombre");
+        modelo.addColumn("tarea");
+        modelo.addColumn("fecha");
+            
+            
+            try {
+                stm = conex.getConnection().createStatement();
+                 
+                   rs = stm.executeQuery("select * from tareas where nombre = '" +radioEduardo.getText()+ "'");
+                
+                   for(int i= 0; rs.next(); i++){
+                   
+                     modelo.addRow(new Object[]{rs.getString("id_usuario"), rs.getString("nombre"), rs.getString("tarea"), 
+                      rs.getString("fecha")});
+                }
+                   
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                        
+                        
+
+            try {
+                stm.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                rs.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                conex.desconectar();
+            
+    }//GEN-LAST:event_radioEduardoActionPerformed
+
+    private void radioCarlosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioCarlosActionPerformed
+            Conexion conex = null;
+            Statement stm = null;
+            ResultSet rs = null;
+
+            conex= new Conexion();
+         modelo = new DefaultTableModel();
+         
+         //id_usuario,nombre,tarea,fecha
+            
+        Tabla_Pendientes.setModel(modelo);
+        modelo.addColumn("id de usuario");
+        modelo.addColumn("nombre");
+        modelo.addColumn("tarea");
+        modelo.addColumn("fecha");
+            
+            
+            try {
+                stm = conex.getConnection().createStatement();
+                 
+                   rs = stm.executeQuery("select * from tareas where nombre = '" +radioCarlos.getText()+ "'");
+                
+                   for(int i= 0; rs.next(); i++){
+                   
+                     modelo.addRow(new Object[]{rs.getString("id_usuario"), rs.getString("nombre"), rs.getString("tarea"), 
+                      rs.getString("fecha")});
+                }
+                   
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                        
+                        
+
+            try {
+                stm.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                rs.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                conex.desconectar();
+  
+    }//GEN-LAST:event_radioCarlosActionPerformed
+
+    private void radioCristalActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioCristalActionPerformed
+            Conexion conex = null;
+            Statement stm = null;
+            ResultSet rs = null;
+
+            conex= new Conexion();
+         modelo = new DefaultTableModel();
+         
+         //id_usuario,nombre,tarea,fecha
+            
+        Tabla_Pendientes.setModel(modelo);
+        modelo.addColumn("id de usuario");
+        modelo.addColumn("nombre");
+        modelo.addColumn("tarea");
+        modelo.addColumn("fecha");
+            
+            
+            try {
+                stm = conex.getConnection().createStatement();
+                 
+                   rs = stm.executeQuery("select * from tareas where nombre = '" +radioCristal.getText()+ "'");
+                
+                   for(int i= 0; rs.next(); i++){
+                   
+                     modelo.addRow(new Object[]{rs.getString("id_usuario"), rs.getString("nombre"), rs.getString("tarea"), 
+                      rs.getString("fecha")});
+                }
+                   
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                        
+                        
+
+            try {
+                stm.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                rs.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                conex.desconectar();
+  
+    }//GEN-LAST:event_radioCristalActionPerformed
+
+    private void radioHernandezActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_radioHernandezActionPerformed
+            Conexion conex = null;
+            Statement stm = null;
+            ResultSet rs = null;
+
+            conex= new Conexion();
+         modelo = new DefaultTableModel();
+         
+         //id_usuario,nombre,tarea,fecha
+            
+        Tabla_Pendientes.setModel(modelo);
+        modelo.addColumn("id de usuario");
+        modelo.addColumn("nombre");
+        modelo.addColumn("tarea");
+        modelo.addColumn("fecha");
+                    
+            try {
+                stm = conex.getConnection().createStatement();
+                 
+                   rs = stm.executeQuery("select * from tareas where nombre = '" +radioHernandez.getText()+ "'");
+                
+                   for(int i= 0; rs.next(); i++){
+                   
+                     modelo.addRow(new Object[]{rs.getString("id_usuario"), rs.getString("nombre"), rs.getString("tarea"), 
+                      rs.getString("fecha")});
+                }
+                   
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                        
+                        
+
+            try {
+                stm.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            try {
+                rs.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(Principal.class.getName()).log(Level.SEVERE, null, ex);
+            }
+                conex.desconectar();
+  
+    }//GEN-LAST:event_radioHernandezActionPerformed
+
+    private void jCUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCUsuariosActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jCUsuariosActionPerformed
 
     public void formatoequipo(){
         Tabla.getColumnModel().getColumn(0).setPreferredWidth(80);
@@ -2137,6 +2725,7 @@ public void actualizaequipo(){
     private javax.swing.JButton BuscarImpresora;
     private javax.swing.JButton BuscarUsuario;
     private javax.swing.JButton EditarImpresora;
+    private com.toedter.calendar.JDateChooser Fecha;
     private javax.swing.JButton GuardarImpresora;
     private javax.swing.JInternalFrame Jfactualizainventario;
     private javax.swing.JInternalFrame Jfconsultainventario;
@@ -2148,6 +2737,7 @@ public void actualizaequipo(){
     private javax.swing.JRadioButton REquipos;
     private javax.swing.JRadioButton RImpresora;
     private javax.swing.JRadioButton RUsuarios;
+    private javax.swing.JPanel RadioBotones;
     private javax.swing.JRadioButton RadioNNI;
     private javax.swing.JRadioButton RadioNombre;
     private javax.swing.JRadioButton RadioSerie;
@@ -2155,53 +2745,58 @@ public void actualizaequipo(){
     private javax.swing.JInternalFrame RespaldoEquipos;
     private javax.swing.JInternalFrame RespaldoImpresora;
     private javax.swing.JInternalFrame RespaldoUsuarios;
+    private javax.swing.JTextArea TaTareas;
     private javax.swing.JTable Tabla;
     private javax.swing.JTable TablaImpresora;
     private javax.swing.JTable TablaMostrar;
     private javax.swing.JTable TablaRespaldoCuentas;
+    private javax.swing.JTable TablaRespaldoEquipos;
     private javax.swing.JTable TablaRespaldoImpresora;
     private javax.swing.JTable TablaRespaldoUsuarios;
     private javax.swing.JTable TablaUsuario;
-    private javax.swing.JTable TablasRespaldoEquipos;
+    private javax.swing.JTable Tabla_Pendientes;
     private javax.swing.JInternalFrame Tareas;
-    private javax.swing.JButton botonActualizar;
     private javax.swing.JButton botonBuscar;
     private javax.swing.JButton botonEditar;
     private javax.swing.JButton btn_regresar;
+    private javax.swing.JDesktopPane desktopPane_Botones;
+    private javax.swing.JDesktopPane desktopPane_deInternalFrame;
+    private javax.swing.JDesktopPane desktopPane_deTablas;
     private javax.swing.ButtonGroup grupoImpresora;
     private javax.swing.ButtonGroup grupoRadios;
     private javax.swing.ButtonGroup grupoRespaldo;
     private javax.swing.ButtonGroup grupoUsuarios;
     private javax.swing.ButtonGroup grupotarea;
     private javax.swing.JButton jButton1;
-    private javax.swing.JDesktopPane jDesktopPane1;
-    private javax.swing.JDesktopPane jDesktopPane2;
+    private javax.swing.JButton jButton3;
+    private javax.swing.JComboBox<String> jCUsuarios;
     private javax.swing.JInternalFrame jInternalFrame1;
     private javax.swing.JInternalFrame jInternalFrame2;
     private javax.swing.JInternalFrame jInternalFrame3;
     private javax.swing.JLabel jLabel1;
+    private javax.swing.JLabel jLabel10;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
     private javax.swing.JLabel jLabel5;
     private javax.swing.JLabel jLabel6;
     private javax.swing.JLabel jLabel7;
+    private javax.swing.JLabel jLabel8;
+    private javax.swing.JLabel jLabel9;
     private javax.swing.JPanel jPanel1;
     private javax.swing.JRadioButton jRadioConexion;
     private javax.swing.JRadioButton jRadioNSerie;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JScrollPane jScrollPane10;
+    private javax.swing.JScrollPane jScrollPane11;
     private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JScrollPane jScrollPane3;
-    private javax.swing.JScrollPane jScrollPane4;
     private javax.swing.JScrollPane jScrollPane5;
     private javax.swing.JScrollPane jScrollPane6;
     private javax.swing.JScrollPane jScrollPane7;
     private javax.swing.JScrollPane jScrollPane8;
     private javax.swing.JScrollPane jScrollPane9;
     private javax.swing.JTabbedPane jTabbedPane1;
-    private javax.swing.JTable jTable1;
-    private javax.swing.JTable jTable2;
     private javax.swing.JTextField jTextImpresora;
     private javax.swing.JInternalFrame jframeRespaldo;
     private javax.swing.JInternalFrame jframetareas;
@@ -2209,7 +2804,6 @@ public void actualizaequipo(){
     private javax.swing.JRadioButton radioCarlos;
     private javax.swing.JRadioButton radioCristal;
     private javax.swing.JRadioButton radioEduardo;
-    private javax.swing.JRadioButton radioGrupal;
     private javax.swing.JRadioButton radioHernandez;
     private javax.swing.JRadioButton radionuevatarea;
     private javax.swing.JRadioButton radiopendientes;
