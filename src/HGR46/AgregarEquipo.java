@@ -4,6 +4,7 @@
  * and open the template in the editor.
  */
 package HGR46;
+import HGR46.Conexion;
 import java.awt.Container;
 import java.awt.Toolkit;
 import java.sql.ResultSet;
@@ -30,10 +31,12 @@ public class AgregarEquipo extends javax.swing.JDialog {
                     setResizable(false);
                     setLocationRelativeTo(null);
                     setSize(768,450);
-                    setDefaultCloseOperation(DO_NOTHING_ON_CLOSE);
                     setIconImage(Toolkit.getDefaultToolkit().getImage("C:\\Users\\master EMM\\Documents\\NetBeansProjects\\Empresa\\IMSS.jpg"));
                     setTitle("SISTEMA DE CONTROL DE INVENTARIO");
-                   
+                    btn_Buscar.setVisible(false);
+                    txtfModificar.setVisible(false);
+                    lblbuscar.setVisible(false);
+                    btn_insertarequipo.setVisible(true);
     }
    
 private boolean camposllenos(){
@@ -88,11 +91,13 @@ private boolean camposllenos(){
         jLabel8 = new javax.swing.JLabel();
         btn_CargarAut = new javax.swing.JButton();
         txtfModificar = new javax.swing.JTextField();
-        jLabel16 = new javax.swing.JLabel();
+        lblbuscar = new javax.swing.JLabel();
         btn_Buscar = new javax.swing.JButton();
         cmbModificar = new javax.swing.JComboBox<>();
         jLabel17 = new javax.swing.JLabel();
         btn_Guardarcambios = new javax.swing.JButton();
+        btnEliminar = new javax.swing.JButton();
+        jLabel16 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setTitle("Sistema de Control de Inventario ver.04");
@@ -172,6 +177,11 @@ private boolean camposllenos(){
         });
         getContentPane().add(btn_insertarequipo, new org.netbeans.lib.awtextra.AbsoluteConstraints(90, 460, -1, -1));
 
+        txtfSerie_Compu.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                txtfSerie_CompuActionPerformed(evt);
+            }
+        });
         txtfSerie_Compu.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
                 txtfSerie_CompuKeyTyped(evt);
@@ -229,8 +239,9 @@ private boolean camposllenos(){
         getContentPane().add(txtfNombre, new org.netbeans.lib.awtextra.AbsoluteConstraints(170, 340, 214, -1));
 
         jLabel2.setFont(new java.awt.Font("Tahoma", 0, 13)); // NOI18N
-        jLabel2.setText("serie compu     *");
-        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 120, -1));
+        jLabel2.setText("serie compu   *");
+        jLabel2.setToolTipText("este campo es obligatorio");
+        getContentPane().add(jLabel2, new org.netbeans.lib.awtextra.AbsoluteConstraints(40, 150, 100, -1));
 
         txtfCuenta.addKeyListener(new java.awt.event.KeyAdapter() {
             public void keyTyped(java.awt.event.KeyEvent evt) {
@@ -307,8 +318,8 @@ private boolean camposllenos(){
         });
         getContentPane().add(txtfModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(380, 70, 140, -1));
 
-        jLabel16.setText("Buscar equipo:");
-        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 90, -1));
+        lblbuscar.setText("Buscar equipo:");
+        getContentPane().add(lblbuscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 70, 90, -1));
 
         btn_Buscar.setText("Buscar");
         btn_Buscar.addActionListener(new java.awt.event.ActionListener() {
@@ -318,7 +329,12 @@ private boolean camposllenos(){
         });
         getContentPane().add(btn_Buscar, new org.netbeans.lib.awtextra.AbsoluteConstraints(550, 70, 100, -1));
 
-        cmbModificar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Numero de serie", "NNI" }));
+        cmbModificar.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Selecciona una opcion...", "Numero de serie", "NNI" }));
+        cmbModificar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                cmbModificarActionPerformed(evt);
+            }
+        });
         getContentPane().add(cmbModificar, new org.netbeans.lib.awtextra.AbsoluteConstraints(50, 70, 180, -1));
 
         jLabel17.setFont(new java.awt.Font("Tahoma", 1, 12)); // NOI18N
@@ -333,13 +349,42 @@ private boolean camposllenos(){
         });
         getContentPane().add(btn_Guardarcambios, new org.netbeans.lib.awtextra.AbsoluteConstraints(270, 460, 150, -1));
 
+        btnEliminar.setText("Eliminar");
+        btnEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEliminarActionPerformed(evt);
+            }
+        });
+        getContentPane().add(btnEliminar, new org.netbeans.lib.awtextra.AbsoluteConstraints(670, 70, 120, -1));
+
+        jLabel16.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
+        jLabel16.setIcon(new javax.swing.ImageIcon(getClass().getResource("/HGR46/port2corregida.jpg"))); // NOI18N
+        getContentPane().add(jLabel16, new org.netbeans.lib.awtextra.AbsoluteConstraints(0, 0, 860, 550));
+
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void cancelarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cancelarActionPerformed
         this.dispose();
     }//GEN-LAST:event_cancelarActionPerformed
-
+    private void Limpiar(){
+        
+        txtfSerie_Compu.setText("");
+        txtfPiso.setText("");
+        txtfArea.setText("");
+        txtfConsultorio.setText("");
+        txtfSubarea.setText("");
+        txtfNombre.setText("");
+        txtfCuenta.setText("");
+        txtfMarca.setText("");
+        txtfModelo.setText("");
+        txtfMac.setText("");
+        txtfNni.setText("");
+        txtfDhcp.setText("");
+        txtfDireccion_Ip.setText("");
+        txtfSerie_Impresora.setText("");
+    }
+            
     
     private void btn_insertarequipoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_insertarequipoActionPerformed
 
@@ -355,18 +400,21 @@ private boolean camposllenos(){
             try {
                 stm = conex.getConnection().createStatement();
 
-                stm.executeUpdate("INSERT INTO equipo (serie_compu,piso,area,consultorio,subarea,nombre,cuenta,marca,"
-                    + "modelo,mac,nni,dhcp,direccion_ip,serie_impresora) "
+                stm.executeUpdate("INSERT INTO equipo (serie_compu,piso,area,consultorio,subarea,nombre,cuenta,marca,modelo,mac,nni,dhcp,direccion_ip,serie_impresora)"
                     + "VALUES ('" +txtfSerie_Compu.getText()+ "','" +txtfPiso.getText()+ "','" +txtfArea.getText()+ "','"
                     +txtfConsultorio.getText()+ "','" +txtfSubarea.getText()+ "','" +txtfNombre.getText()+ "','"
                     +txtfCuenta.getText()+ "','" +txtfMarca.getText()+ "','" +txtfModelo.getText()+ "','"
                     +txtfMac.getText()+ "','" +txtfNni.getText()+ "','" +txtfDhcp.getText()+ "','"
                     +txtfDireccion_Ip.getText()+ "','" +txtfSerie_Impresora.getText()+ "')");
-
+                
+                showMessageDialog(null,"equipo añadido correctamente");
+                
+                Limpiar();
+                
             } catch (SQLException ex) {
                 Logger.getLogger(AgregarEquipo.class.getName()).log(Level.SEVERE, null, ex);
             }
-            showMessageDialog(null,"equipo añadido correctamente");
+            
 
             try {
                 stm.close();
@@ -403,7 +451,7 @@ private boolean camposllenos(){
 
     private void btn_CargarAutActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_CargarAutActionPerformed
         
-                    txtfSerie_Compu.setText("SMXPRUEBA");
+                    txtfSerie_Compu.setText("SMX");
                     txtfPiso.setText("PB");
                     txtfArea.setText("PERSONAL");
                     txtfConsultorio.setText("N/A");
@@ -422,12 +470,18 @@ private boolean camposllenos(){
 
     private void btn_BuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_BuscarActionPerformed
 
+        txtfSerie_Compu.setEditable(false);
+        txtfModificar.setEditable(false);
+        btn_Buscar.setEnabled(false);
+        btn_CargarAut.setEnabled(false);
+        
         if(txtfModificar.getText().length() > 0){
             Conexion conex = null;
             Statement stm = null;
             ResultSet rs = null;
 
             conex= new Conexion();
+            
             if(cmbModificar.getSelectedItem() == "Numero de serie") {
                 try {
                     stm = conex.getConnection().createStatement();
@@ -518,30 +572,37 @@ private boolean camposllenos(){
 
     private void btn_GuardarcambiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btn_GuardarcambiosActionPerformed
        
+        txtfSerie_Compu.setEditable(true);
+        txtfModificar.setEditable(true);
+        btn_Buscar.setEnabled(true);
+        btn_CargarAut.setEnabled(true);
+        
         if(camposllenos()==true){
+           
             Conexion conex = null;
             Statement stm = null;
             ResultSet rs = null;
-
+            
             conex= new Conexion();
 
             try {
                 stm = conex.getConnection().createStatement();
-
-                stm.executeUpdate("UPDATE FROM equipo SET (serie_compu ='" +txtfSerie_Compu.getText()+ "',"
+                stm.executeUpdate("UPDATE equipo SET serie_compu ='" +txtfSerie_Compu.getText()+ "',"
                         + "piso = '" +txtfPiso.getText()+ "', area = '" +txtfArea.getText()+ "', "
                         + "consultorio = '" +txtfConsultorio.getText()+ "', subarea = '" +txtfSubarea.getText()+ "',"
                         + "nombre = '" +txtfNombre.getText()+ "',cuenta = '" +txtfCuenta.getText()+ "',"
                         + "marca = '" +txtfMarca.getText()+ "',modelo = '" +txtfModelo.getText()+ "',"
                         + "mac = '" +txtfMac.getText()+ "',nni = '" +txtfNni.getText()+ "',"
                         + "dhcp = '" +txtfDhcp.getText()+ "',direccion_ip = '"+txtfDireccion_Ip.getText()+ "',"
-                        + "serie_impresora = '" +txtfSerie_Impresora.getText()+ "'");
-                  
-
+                        + "serie_impresora = '" +txtfSerie_Impresora.getText()+ "' where serie_compu ='" +txtfSerie_Compu.getText()+"'");
+                
+                showMessageDialog(null,"equipo modificado correctamente");
+                
+                Limpiar();
             } catch (SQLException ex) {
                 Logger.getLogger(AgregarEquipo.class.getName()).log(Level.SEVERE, null, ex);
             }
-            showMessageDialog(null,"equipo modificado correctamente");
+            
             
             try {
                 stm.close();
@@ -557,6 +618,7 @@ private boolean camposllenos(){
 
             
         }else   showMessageDialog(null,"campos vacios!!!");
+        
         
     }//GEN-LAST:event_btn_GuardarcambiosActionPerformed
 
@@ -684,6 +746,69 @@ private boolean camposllenos(){
         }
     }//GEN-LAST:event_txtfSerie_ImpresoraKeyTyped
 
+    private void cmbModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_cmbModificarActionPerformed
+        
+        if(cmbModificar.getSelectedIndex() == 0){
+                    btn_Buscar.setVisible(false);
+                    txtfModificar.setVisible(false);
+                    lblbuscar.setVisible(false);
+                    btn_Guardarcambios.setVisible(false);
+        }else if(cmbModificar.getSelectedIndex() == 1){
+                    btn_Buscar.setVisible(true);
+                    txtfModificar.setVisible(true);
+                    lblbuscar.setVisible(true);
+                    btn_Guardarcambios.setVisible(true);
+                    btn_insertarequipo.setVisible(false);
+        }else if(cmbModificar.getSelectedIndex() == 2){
+                    btn_Buscar.setVisible(true);
+                    txtfModificar.setVisible(true);
+                    lblbuscar.setVisible(true);
+                    btn_Guardarcambios.setVisible(true);
+                    btn_insertarequipo.setVisible(false);
+        }
+        
+    }//GEN-LAST:event_cmbModificarActionPerformed
+
+    private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
+        
+        txtfSerie_Compu.setEditable(true);
+        txtfModificar.setEditable(true);
+        btn_Buscar.setEnabled(true);
+        btn_CargarAut.setEnabled(true);
+        
+        if(camposllenos()==true){
+            Conexion conex = null;
+            Statement stm = null;
+            ResultSet rs = null;
+
+            conex= new Conexion();
+
+            try {
+                stm = conex.getConnection().createStatement();
+
+                stm.executeUpdate("DELETE FROM equipo WHERE equipo.serie_compu = '" +txtfSerie_Compu.getText()+ "'");
+                showMessageDialog(null,"equipo eliminado correctamente");
+                
+                Limpiar();
+                
+            } catch (SQLException ex) {
+                Logger.getLogger(AgregarEquipo.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            
+
+            try {
+                stm.close();
+            } catch (SQLException ex) {
+                Logger.getLogger(AgregarEquipo.class.getName()).log(Level.SEVERE, null, ex);
+            }
+            conex.desconectar();
+        }else   showMessageDialog(null,"campos vacios!!!");
+    }//GEN-LAST:event_btnEliminarActionPerformed
+
+    private void txtfSerie_CompuActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_txtfSerie_CompuActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_txtfSerie_CompuActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -698,6 +823,7 @@ private boolean camposllenos(){
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btn_Buscar;
     private javax.swing.JButton btn_CargarAut;
     private javax.swing.JButton btn_Guardarcambios;
@@ -721,6 +847,7 @@ private boolean camposllenos(){
     private javax.swing.JLabel jLabel7;
     private javax.swing.JLabel jLabel8;
     private javax.swing.JLabel jLabel9;
+    private javax.swing.JLabel lblbuscar;
     private javax.swing.JTextField txtfArea;
     private javax.swing.JTextField txtfConsultorio;
     private javax.swing.JTextField txtfCuenta;
